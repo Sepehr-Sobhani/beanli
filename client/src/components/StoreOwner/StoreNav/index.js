@@ -7,16 +7,15 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 const StoreNav = () => {
   return (
     <div className="store-navbar">
-      <div className="logo-welcome-container">
-        <div className="logo">
+      <div className="store-logo-welcome-container">
+        <div className="store-logo">
           <Logo />
         </div>
-        <div className="welcome-message">
-          {/* <WelcomeMessage name={"Andy"} /> */}
-          <h3>Hi Andy, how've ya bean?</h3>
+        <div className="store-welcome-message">
+          <WelcomeMessage name={"Andy"} />
         </div>
       </div>
-      <div className="logout-manage-menu-container">
+      <div className="store-logout-manage-menu-container">
         {/* <Logout /> */}
         <ExitToAppIcon />
       </div>
