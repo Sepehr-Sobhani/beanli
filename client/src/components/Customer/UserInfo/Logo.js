@@ -1,7 +1,7 @@
+import logo from "../../../assets/logo/logo.png";
+
 function Logo() {
-  return(
-    <h3>Logo</h3>
-  )
+  return <img src={logo} alt="Logo"></img>;
 }
 
-export default Logo
+export default Logo;
