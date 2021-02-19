@@ -1,42 +1,37 @@
 // Variables
 $black-color: #131212;
+$white-color: #a8a8a8;
 
 .store-navbar {
   display: flex;
   justify-content: space-between;
-  background-color: $black-color;
-  color: antiquewhite;
   overflow: hidden;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23222' stroke-width='10' %3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E");
+  // background-image: url(https://images.unsplash.com/photo-1611072337226-1140ab367200?ixlib=rb-1.2.1&ixid=MXwxM[%E2%80%A6]by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1279&q=80);
+  background-color: $white-color;
+  align-items: center;
 }
 
-.logo-welcome-container {
+.store-logo-welcome-container {
   display: flex;
   padding: 1rem;
+  h3 {
+    background-color: transparent;
+    font-size: 1.3rem;
+  }
+  .store-logo {
+    display: flex;
+    margin-right: 1rem;
+    height: 8rem;
+    width: 8rem;
+    margin-top: -3.3rem;
+    margin-bottom: -3.5rem;
+  }
 }
 
-.logout-manage-menu-container {
+.store-logout-manage-menu-container {
   display: flex;
   padding: 1rem;
-}
-
-.logo {
-  margin-right: 2rem;
-  margin-top: 0.5rem;
-  animation: App-logo-spin infinite 5s;
-  animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  height: 0.5vmin;
-  pointer-events: none;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

@@ -13,7 +13,9 @@ const OrderColumns = ({ column, columnId }) => {
               {...provided.droppableProps}
               ref={provided.innerRef}
               style={{
-                background: snapshot.isDraggingOver ? "lightblue" : "lightgrey",
+                background: snapshot.isDraggingOver
+                  ? "rgba(173,216,230, 0.5)"
+                  : "rgba(169,169,169, 0.5)",
               }}
             >
               {column.items.map((item, index) => {

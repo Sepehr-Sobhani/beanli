@@ -7,7 +7,7 @@ const OrderItems = ({ item, index }) => {
       {(provided, snapshot) => {
         return (
           <div
-            className="order-container"
+            className="store-order-container"
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
@@ -17,11 +17,11 @@ const OrderItems = ({ item, index }) => {
               ...provided.draggableProps.style,
             }}
           >
-            <div className="order-item-customer">{item.username}</div>
+            <div className="store-order-item-customer">{item.username}</div>
             <div>
               {item.orders.map((order, index) => {
                 return (
-                  <div className="order-items" key={index}>
+                  <div className="store-order-items" key={index}>
                     <span>{Object.keys(order)}</span>
                     <span>{Object.values(order)}</span>
                   </div>
