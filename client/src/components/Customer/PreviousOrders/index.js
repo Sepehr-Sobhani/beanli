@@ -27,7 +27,7 @@ function PreviousOrders() {
       <div>
         {order.orderItems.map((item) => {
           return (
-            <div>
+            <div className="prev-orders">
               <Card className="root">
                 <CardContent className="content">
                   <div className="order-item-details">
@@ -47,20 +47,20 @@ function PreviousOrders() {
             </div>
           );
         })}
-
         <div className="reorder-container">
           <p>Total ${convertCentsToDollars(order.totalPrice)}</p>
-          <Button variant="contained" onClick={() => reorder(order.id)}>
+          <Button style={{position: 'inherit'}} variant="contained" onClick={() => reorder(order.id)}>
             Reorder
           </Button>
         </div>
+
       </div>
     );
   });
 
   return (
     <div>
-      <h3>Previous Orders</h3>
+      <h3 className='prev-order-title'>Previous Orders</h3>
       {previous}
     </div>
   );
