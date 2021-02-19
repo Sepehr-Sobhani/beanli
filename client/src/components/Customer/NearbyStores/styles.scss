@@ -1,13 +1,29 @@
 .nearby-stores-container {
   display: flex;
   flex-direction: column;
+  margin-top: 1.5rem;
+  .gridlist-container {
+    margin-top: 1rem;
+    li {
+      margin-top: 0.5rem;
+      transition: box-shadow 0.3s ease-in-out;
+
+      &:hover {
+        box-shadow: 0 0.3rem 1rem rgb(0, 0, 0);
+      }
+    }
+  }
 }
 
 .nearby-stores-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  h3 {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+  }
 }
-
 
 .gridList {
   width: 100%;
@@ -15,5 +31,5 @@
 }
 
 .icon {
-  color: 'rgba(255, 255, 255, 0.54)';
+  color: "rgba(255, 255, 255, 0.54)";
 }

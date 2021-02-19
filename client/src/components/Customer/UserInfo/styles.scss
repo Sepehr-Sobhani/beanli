@@ -1,19 +1,116 @@
+// Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,700;1,900&display=swap");
+// Font Variables
+$raleway: "Raleway", serif;
+
+// Variables
+$brown-color: #68431b;
+$white-color: antiquewhite;
+$black-color: #131212;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+i,
+header,
+nav {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: $raleway;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+  background-color: hsl(0, 0%, 95%);
+}
+
 .user-info-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  height: 8rem;
+  background-position: center;
+  background-size: cover;
+  color: $black-color;
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  background-image: url(https://images.unsplash.com/photo-1611072337226-1140ab367200?ixlib=rb-1.2.1&ixid=MXwxM[%E2%80%A6]by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1279&q=80);
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .beans-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  background-color: hsl(0, 0%, 95%);
+  border-radius: 10%;
+  color: $black-color;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .user-info-left-container {
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: flex-start;
   flex-direction: column;
+  .user-tier-container {
+    margin-top: 1.5rem;
+    margin-left: 0.3rem;
+    p {
+      background-color: transparent;
+    }
+  }
+  .welcome-message {
+    font-size: 1.2rem;
+    margin-top: 0.9rem;
+    margin-left: 0.3rem;
+    h3 {
+      background-color: transparent;
+    }
+  }
 }
 
 .logo-welcome-container {
   display: flex;
+  justify-content: space-between;
+  .logo {
+    display: flex;
+    margin-right: 1rem;
+    height: 8rem;
+    width: 8rem;
+    margin-top: -2rem;
+    margin-bottom: -3.5rem;
+    h3 {
+      background-color: transparent;
+    }
+  }
 }
-
