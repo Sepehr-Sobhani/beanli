@@ -1,10 +1,14 @@
 .root {
   display: flex;
+  margin: auto;
 }
 
 .order-item-details {
   display: flex;
+}
 
+.prev-orders {
+  height: auto;
 }
 
 .price-quantity-container {
@@ -17,10 +21,19 @@
 }
 
 .cover {
-  width: 151px;
+  width: 130px;
+  height: 8rem;
+  display: block;
 }
 
 .reorder-container {
   display: flex;
   justify-content: space-around;
+}
+
+.prev-order-title {
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  text-align: left;
 }
