@@ -14,7 +14,11 @@ function YourCartButton(props) {
   }, [props]);
 
   return (
-    <Button variant="contained" onClick={props.handleOpen}>
+    <Button
+      className="total-cart-button"
+      variant="contained"
+      onClick={props.handleOpen}
+    >
       Your cart ({cart.length}) total: ${convertCentsToDollars(total)}
     </Button>
   );
