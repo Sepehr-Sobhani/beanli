@@ -4,23 +4,19 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { useContext } from "react";
 import { convertCentsToDollars } from "../../../helpers/math";
-import { getOrdersInfo } from "../../../helpers/selectors";
 import { appContext } from "../../appContext";
-
+import { getTotal } from "../../../helpers/getTotal";
+import { getOrdersInfo } from "../../../helpers/selectors";
+import bean from "../../../assets/bean.png"
 
 import "./styles.scss";
 
 function PreviousOrders(props) {
   
   const { state } = useContext(appContext);
-  console.log('state orders ', state.orders)
-
   const prevOrders = getOrdersInfo(state.orders);
-  console.log('prevOrders:', prevOrders)
-
   
   const reorder = (order) => {
-    console.log(order)
    props.setCart(order.orderItems)
   };
 
@@ -51,6 +47,9 @@ function PreviousOrders(props) {
         })}
         <div className="reorder-container">
           <p>Total ${convertCentsToDollars(order.totalPrice)}</p>
+          {order.totalPrice<getTotal(order.orderItems) &&
+          <img src={bean} alt="Beans Spent" width="20" height="20"></img>
+  }
           <Button style={{position: 'inherit'}} variant="contained" onClick={() => reorder(order)}>
             Reorder
           </Button>
