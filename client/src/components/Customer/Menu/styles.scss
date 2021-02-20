@@ -1,18 +1,49 @@
+// Variables
+$brown-color: #68431b;
+
 .category-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   overflow: hidden;
-}
-.menuList {
-  // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-  transform: translateZ(0);
+  margin-bottom: 2.5rem;
+  margin-left: 0.2rem;
+  .menuList {
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: translateZ(0);
+    .titleBar {
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.3) 70%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      .title {
+        color: black;
+      }
+    }
+    .MuiGridListTileBar-titleWrap {
+      margin-left: 0.3rem;
+    }
+    .MuiIconButton-root {
+      padding-right: 0.5rem;
+      padding-left: 0;
+    }
+  }
+  img {
+    width: 150px;
+    height: 150px;
+  }
+  .MuiGridListTile-tile {
+    display: flex;
+    justify-content: center;
+  }
 }
 
-.title {
-  color: black;
-}
-
-.titleBar {
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)
+.menu-category-title {
+  font-size: 1.5rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.6rem;
+  margin-left: 0.5rem;
+  text-decoration: underline;
 }

@@ -62,7 +62,7 @@ function PreviousOrders(props) {
   });
 
   return (
-    <div>
+    <div className="previous-order-root">
       <h3 className="prev-order-title">Previous Orders</h3>
       {previous}
     </div>

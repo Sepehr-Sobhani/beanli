@@ -3,12 +3,17 @@
   align-items: center;
 }
 
+.previous-order-root {
+  margin-bottom: 2.5rem;
+}
+
 .prev-order-container {
   margin-top: 1rem;
   .prev-orders {
     margin-top: 0.3rem;
     .MuiPaper-root.MuiCard-root.root.MuiPaper-elevation1.MuiPaper-rounded {
       border-radius: 10px;
+      height: 6rem;
     }
     .MuiCardContent-root {
       display: flex;
@@ -16,6 +21,8 @@
       .order-item-details {
         display: flex;
         justify-content: center;
+        margin-top: -1rem;
+        margin-bottom: 1rem;
       }
       p {
         background-color: white;
