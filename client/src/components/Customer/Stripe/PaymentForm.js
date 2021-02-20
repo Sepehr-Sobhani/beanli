@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { appContext } from "../../appContext";
 
 import "./style.scss";
-import { beansEarned, convertCentsToDollars } from "../../../helpers/math";
+import { beansEarned, checkTier, convertCentsToDollars } from "../../../helpers/math";
 
 export default function PaymentForm(props) {
   const [formState, setFormState] = useState("idle");
@@ -63,18 +63,23 @@ export default function PaymentForm(props) {
     const beansSpent = props.beansSpent
     const newCurrent = currentBeans - beansSpent + beansEarned(props.order.total, accelerator);
     const newLifetime  = beansEarned(props.order.total, accelerator, currentLifetimeBeans)
+    const {name: newTier, accelerator: newAccelerator} = checkTier(newLifetime)
+
         
-    console.log('checking values:')
+    console.log('********************************')
     console.log('OrderTotal-CashSpent:', props.order.total)
     console.log('beansSpent:', beansSpent)
     console.log('UserID:', userId)
     console.log('newCurrentBeans:', newCurrent)
     console.log('newLifetimeBeans:', newLifetime)
-    console.log('tier:', tier)
-    console.log('accelerator', accelerator)
+    console.log('prevTier:', tier)
+    console.log('Currentaccelerator', accelerator)
+    console.log('newTier', newTier)
+    console.log('newAccelerator', newAccelerator)
+    console.log('********************************')
     
     await postOrder(order);
-    await updateBeans(userId, newCurrent, newLifetime, tier, accelerator)
+    await updateBeans(userId, newCurrent, newLifetime, newTier, newAccelerator)
     
     history.push("/orderconfirmed");
     } else {

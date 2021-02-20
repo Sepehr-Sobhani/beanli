@@ -8,14 +8,15 @@ import { appContext } from "../../appContext";
 import { getTotal } from "../../../helpers/getTotal";
 import bean from "../../../assets/logo/beans.png";
 import { getOrdersInfo } from "../../../helpers/selectors";
+
 import "./styles.scss";
 
 function PreviousOrders(props) {
   const { state } = useContext(appContext);
   const prevOrders = getOrdersInfo(state.orders);
-  
+
   const reorder = (order) => {
-   props.setCart(order.orderItems)
+    props.setCart(order.orderItems);
   };
 
   const previous = prevOrders.map((order) => {
@@ -53,7 +54,6 @@ function PreviousOrders(props) {
             variant="contained"
             onClick={() => reorder(order.id)}
           >
-       }
             Reorder
           </Button>
         </div>
