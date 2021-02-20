@@ -16,6 +16,7 @@ function PreviousOrders() {
   console.log('state orders ', state.orders)
 
   const prevOrders = getOrdersInfo(state.orders);
+  console.log('prevOrders:', prevOrders)
 
   
   const reorder = (orderId) => {
