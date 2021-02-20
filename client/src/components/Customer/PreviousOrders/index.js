@@ -8,7 +8,6 @@ import { appContext } from "../../appContext";
 import { getTotal } from "../../../helpers/getTotal";
 import bean from "../../../assets/logo/beans.png";
 import { getOrdersInfo } from "../../../helpers/selectors";
-import bean from "../../../assets/bean.png";
 
 import "./styles.scss";
 
@@ -55,7 +54,6 @@ function PreviousOrders(props) {
             variant="contained"
             onClick={() => reorder(order.id)}
           >
-       }
             Reorder
           </Button>
         </div>
