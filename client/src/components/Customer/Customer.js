@@ -55,6 +55,8 @@ export default function Customer() {
 
   const handleClose = () => {
     setShowCart(false)
+    setBeansSpent(0)
+    setTotal(getTotal(cart))
   }
 
   return(
@@ -93,6 +95,7 @@ export default function Customer() {
             total={total} 
             cart={cart} 
             beansSpent={beansSpent}
+            handleClose={event => handleClose()}
             />
         </Route>
 
