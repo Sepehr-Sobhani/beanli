@@ -52,7 +52,7 @@ function PreviousOrders(props) {
           <Button
             style={{ position: "inherit" }}
             variant="contained"
-            onClick={() => reorder(order.id)}
+            onClick={() => reorder(order)}
           >
             Reorder
           </Button>

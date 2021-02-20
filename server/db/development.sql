@@ -1,14 +1,14 @@
 INSERT INTO users
   (username, password, phone_number, type)
 VALUES
-  ('Travis', '123', '1111111111', 'o'),
-  ('Mary', '456', '2222222222', 'o'),
-  ('Bob', '789', '3333333333', 'o'),
-  ('Jack', '987', '4444444444', 'o'),
-  ('Sydney', '654', '5555555555', 'o'),
-  ('Sam', '321', '6666666666', 'o'),
-  ('Andy', '246', '7777777777', 'c'),
-  ('Kirk', '135', '8888888888', 'c');
+  ('Travis', '123', '(346)-469-1148', 'o'),
+  ('Mary', '456', '(326)-807-5465', 'o'),
+  ('Bob', '789', '(630)-707-1901', 'o'),
+  ('Jack', '987', '(988)-562-0721', 'o'),
+  ('Sydney', '654', '(904)-367-7205', 'o'),
+  ('Sam', '321', '(904)-366-7805', 'o'),
+  ('Andy', '246', '(542)-736-8104', 'c'),
+  ('Kirk', '135', '(479)-269-6870', 'c');
 
 INSERT INTO stores
   (name, latitude, longitude, image, address, description, user_id)
@@ -18,12 +18,12 @@ VALUES
   ('Berry Good', 49.183342923748526, -123.12560035997672, 'https://images.unsplash.com/photo-1494346480775-936a9f0d0877?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1303&q=80', '8766 McKim Way, Richmond, BC V6X 3Z8, Canada', 'Here you’ll get to drink some of the most authentic coffee in Richmond. We use only the best roasts, mostly from around North America.', 3),
   ('Tiger Sugar', 49.170551459330326, -123.13260825862473, 'https://images.unsplash.com/photo-1533630757306-cbadb934bcb1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80', '8271 Westminster Highway, Richmond, BC V6X 3K5, Canada', 'We’re dedicated to sourcing, hand roasting and blending each of our espressos, containing up to 13 different origin coffees. We put the same due diligence and passion into our pourover, drip and French press coffee blends.', 4),
   ('Cafe Delta', 49.14700552985569, -122.89117268206913, 'https://images.unsplash.com/photo-1464979681340-bdd28a61699e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80', '7907 Scott Road, Delta, BC V3W 3N2, Canada', 'At our microroastery, we specialize in roasting highly traceable specialty grade coffees, sourced with integrity by importers who pay what the coffee is really worth.', 5),
-  ('IHOP', 49.15199892579976, -122.88989825243101, 'https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80', '82 Avenue, Surrey, BC V4C 6R1, Canada', 'We are committed to sourcing unique coffees from quality farms around different origins. Our coffee offerings rotate with the seasonality of the harvest at source and we strive to have exciting options throughout the year.', 6);
+  ('Coffee Club', 49.15199892579976, -122.88989825243101, 'https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80', '82 Avenue, Surrey, BC V4C 6R1, Canada', 'We are committed to sourcing unique coffees from quality farms around different origins. Our coffee offerings rotate with the seasonality of the harvest at source and we strive to have exciting options throughout the year.', 6);
 
 INSERT INTO menu_items
   (name, price, image, category, description, store_id)
 VALUES
-  ('Con Panna', 400, 'https://secondcup.com/sites/default/files/styles/product_shot_large/public/product/images/Con_Panna.jpg?h=fbf7a813&itok=mGiPBRoS', 'Espresso Bar', 'A true indulgence: espresso topped with a generous dollop of real whipped cream', 1),
+   ('Con Panna', 400, 'https://secondcup.com/sites/default/files/styles/product_shot_large/public/product/images/Con_Panna.jpg?h=fbf7a813&itok=mGiPBRoS', 'Espresso Bar', 'A true indulgence: espresso topped with a generous dollop of real whipped cream', 1),
   ('Moccaccino', 325, 'https://secondcup.com/sites/default/files/styles/product_shot_large/public/product/images/Moccaccino_0.jpg?h=fbf7a813&itok=p7n3eafi', 'Espresso Bar', 'An aromatic and robust blend, featuring the deep rich flavours of chocolate and espresso. Served with whipped cream', 1),
   ('Espresso Macchiato', 425, 'https://secondcup.com/sites/default/files/styles/product_shot_large/public/product/images/Espresso_Macchiato.jpg?h=fbf7a813&itok=PSaug2AA', 'Espresso Bar', 'A signature beverage, featuring espresso with milk and topped with a dollop of foam', 1),
   ('Cappuccino', 350, 'https://secondcup.com/sites/default/files/styles/product_shot_large/public/product/images/Cappuccino_0.jpg?h=fbf7a813&itok=3tf5sHGA', 'Espresso Bar', 'A soothing sip, combining equal portions of espresso, steamed milk, and foam for an ideal tasting experience', 1),
@@ -130,9 +130,9 @@ INSERT INTO orders
   (time_created, total_price, completed, store_id, user_id)
 VALUES
   ('2021-01-01 19:10:25', 1125, TRUE, 1, 7),
-  ('2021-01-01 19:11:25', 775, FALSE, 1, 8),
-  ('2021-01-01 19:12:25', 750, FALSE, 2, 7),
-  ('2021-02-02 10:13:25', 710, FALSE, 2, 8);
+  ('2021-01-01 19:11:25', 775, TRUE, 1, 8),
+  ('2021-01-01 19:12:25', 750, TRUE, 2, 7),
+  ('2021-02-02 10:13:25', 710, TRUE, 2, 8);
 
 INSERT INTO order_items
   (order_id, menu_item_id)

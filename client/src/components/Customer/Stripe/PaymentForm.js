@@ -14,8 +14,6 @@ export default function PaymentForm(props) {
   const elements = useElements();
   const history = useHistory();
 
-  console.log(props);
-
   const orderData = (order) => {
     const d = new Date(Date.now());
     let dateString = `${d.getFullYear()}-${d.getMonth()}-${d.getDay()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
@@ -70,6 +68,7 @@ export default function PaymentForm(props) {
     console.log('OrderTotal-CashSpent:', props.order.total)
     console.log('beansSpent:', beansSpent)
     console.log('UserID:', userId)
+    console.log('currentLifeTimeBeans:', currentLifetimeBeans)
     console.log('newCurrentBeans:', newCurrent)
     console.log('newLifetimeBeans:', newLifetime)
     console.log('prevTier:', tier)
