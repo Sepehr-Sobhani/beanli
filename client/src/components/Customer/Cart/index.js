@@ -22,7 +22,6 @@ function Cart(props) {
   };
 
   const handleSubmit = (event) => {
-    props.handleClose();
     history.push("/checkout");
     event.preventDefault();
   };

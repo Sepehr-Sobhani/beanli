@@ -81,6 +81,7 @@ export default function PaymentForm(props) {
     await postOrder(order);
     await updateBeans(userId, newCurrent, newLifetime, newTier, newAccelerator)
     
+    props.handleClose()
     history.push("/orderconfirmed");
     } else {
       setError(error);
