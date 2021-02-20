@@ -12,7 +12,7 @@ const StoreNav = () => {
           <Logo />
         </div>
         <div className="store-welcome-message">
-          <WelcomeMessage name={"Andy"} />
+          <WelcomeMessage name={"Travis"} />
         </div>
       </div>
       <div className="store-logout-manage-menu-container">
