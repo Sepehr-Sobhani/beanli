@@ -4,7 +4,7 @@ function CurrentBeans(props) {
   return (
     <div className="beans-status">
       <p>Current beans</p>
-      <h3>{currentBeans}</h3>
+      <h3>{Math.floor(currentBeans / 100)} </h3>
     </div>
   );
 }

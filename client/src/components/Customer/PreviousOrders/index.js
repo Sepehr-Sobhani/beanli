@@ -7,17 +7,16 @@ import { convertCentsToDollars } from "../../../helpers/math";
 import { appContext } from "../../appContext";
 import { getTotal } from "../../../helpers/getTotal";
 import { getOrdersInfo } from "../../../helpers/selectors";
-import bean from "../../../assets/bean.png"
+import bean from "../../../assets/bean.png";
 
 import "./styles.scss";
 
 function PreviousOrders(props) {
-  
   const { state } = useContext(appContext);
   const prevOrders = getOrdersInfo(state.orders);
-  
+
   const reorder = (order) => {
-   props.setCart(order.orderItems)
+    props.setCart(order.orderItems);
   };
 
   const previous = prevOrders.map((order) => {
@@ -47,21 +46,24 @@ function PreviousOrders(props) {
         })}
         <div className="reorder-container">
           <p>Total ${convertCentsToDollars(order.totalPrice)}</p>
-          {order.totalPrice<getTotal(order.orderItems) &&
-          <img src={bean} alt="Beans Spent" width="20" height="20"></img>
-  }
-          <Button style={{position: 'inherit'}} variant="contained" onClick={() => reorder(order)}>
+          {order.totalPrice < getTotal(order.orderItems) && (
+            <img src={bean} alt="Beans Spent" width="20" height="20"></img>
+          )}
+          <Button
+            style={{ position: "inherit" }}
+            variant="contained"
+            onClick={() => reorder(order)}
+          >
             Reorder
           </Button>
         </div>
-
       </div>
     );
   });
 
   return (
     <div>
-      <h3 className='prev-order-title'>Previous Orders</h3>
+      <h3 className="prev-order-title">Previous Orders</h3>
       {previous}
     </div>
   );

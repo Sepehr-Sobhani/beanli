@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
 import Slider from "@material-ui/core/Slider";
 import { appContext } from "../../appContext";
-import { maxForSlider, totalFromCart } from "../../../helpers/math";
+import {
+  beanDollarRatio,
+  maxForSlider,
+  totalFromCart,
+} from "../../../helpers/math";
 
 export default function BeanSlider(props) {
+  console.log(totalFromCart(props.total));
 
-  console.log(totalFromCart(props.total))
-
-  const totalInCart = totalFromCart(props.total)
+  const totalInCart = totalFromCart(props.total);
 
   const [sliderView, setSliderView] = useState(0);
   const [sliderValue, setSliderValue] = useState(0);
@@ -28,15 +31,16 @@ export default function BeanSlider(props) {
     setSliderValue(newValue);
   };
 
-  // get user beans
   return (
     <Slider
       value={sliderView}
       min={0}
-      max={maxForSlider(userBeans, totalInCart, 0.5)}
+      max={maxForSlider(userBeans, totalInCart, beanDollarRatio)}
       onChange={handleChange}
       onChangeCommitted={handleChangeCommitted}
       valueLabelDisplay="auto"
+      // Allows slider to show user bean in a Dollar context
+      valueLabelFormat={(value) => Math.floor(value / 100)}
     />
   );
 }

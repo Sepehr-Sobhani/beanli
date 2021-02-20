@@ -4,7 +4,7 @@ function LifetimeBeans(props) {
   return (
     <div className="beans-status">
       <p>Lifetime beans</p>
-      <h3>{lifetimeBeans}</h3>
+      <h3>{Math.floor(lifetimeBeans / 100)}</h3>
     </div>
   );
 }

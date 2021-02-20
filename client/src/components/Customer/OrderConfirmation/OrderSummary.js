@@ -11,12 +11,13 @@ export default function StoreSummary(props) {
     "0"
   ];
   const userAccelerator = context.state.user[0].accelerator;
+  const beansEarnedForDisplay = Math.floor(beansEarned(userAccelerator, mostRecentTotal) / 100)
 
   return (
     <div>
       <h3>Order Summary</h3>
       <p>
-        You have earned {beansEarned(userAccelerator, mostRecentTotal)} beans!
+        {`You have earned ${beansEarnedForDisplay} bean${beansEarnedForDisplay!==1 ? 's' : ''}!`}
       </p>
       <div className="orders-container">
         {orderItems.map((item) => {
