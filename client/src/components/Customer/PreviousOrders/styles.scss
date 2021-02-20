@@ -1,39 +1,64 @@
 .root {
   display: flex;
-  margin: auto;
+  align-items: center;
 }
 
-.order-item-details {
-  display: flex;
-}
+.prev-order-container {
+  margin-top: 1rem;
+  .prev-orders {
+    margin-top: 0.3rem;
+    .MuiPaper-root.MuiCard-root.root.MuiPaper-elevation1.MuiPaper-rounded {
+      border-radius: 10px;
+    }
+    .MuiCardContent-root {
+      display: flex;
+      flex-direction: column;
+      .order-item-details {
+        display: flex;
+        justify-content: center;
+      }
+      p {
+        background-color: white;
+      }
+    }
+    .content {
+      flex: 1 0 auto;
+    }
+    .cover {
+      width: 5rem;
+      height: 5rem;
+      margin-top: -1rem;
+    }
+  }
+  .price-quantity-container {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.prev-orders {
-  height: auto;
-}
-
-.price-quantity-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.content {
-  flex: 1 0 auto;
-}
-
-.cover {
-  width: 130px;
-  height: 8rem;
-  display: block;
-}
-
-.reorder-container {
-  display: flex;
-  justify-content: space-around;
+  .reorder-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+    font-size: large;
+    button {
+      font-weight: bolder;
+    }
+  }
 }
 
 .prev-order-title {
   margin-top: 1.5rem;
-  margin-left: 1rem;
+  margin-left: 0.8rem;
   font-size: 1.5rem;
   text-align: left;
+  margin-bottom: 0.3rem;
+}
+
+.home-button {
+  position: fixed;
+  bottom: 0rem;
+  margin-left: 0.2rem;
+  margin-bottom: 0.2rem;
 }

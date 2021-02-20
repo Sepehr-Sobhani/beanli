@@ -1,22 +1,29 @@
-import Fab from '@material-ui/core/Fab';
-import CloseIcon from '@material-ui/icons/Close';
+import Fab from "@material-ui/core/Fab";
+import CloseIcon from "@material-ui/icons/Close";
 
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+
+const fabStyle = {
+  height: 30,
+  width: 30,
+  opacity: "50%",
+  backgroundColor: "black",
+};
 
 function HomeButton() {
-
   const history = useHistory();
 
-const goHome = () => {
-  history.push('/')
+  const goHome = () => {
+    history.push("/");
+  };
+
+  return (
+    <div className="home-button">
+      <Fab style={fabStyle} aria-label="add" onClick={goHome}>
+        <CloseIcon style={{ color: "white" }} />
+      </Fab>
+    </div>
+  );
 }
 
-  return(
-<Fab size="small" aria-label="add" onClick={goHome}>
-  <CloseIcon />
-</Fab>
-
-  )
-}
-
-export default HomeButton
+export default HomeButton;
