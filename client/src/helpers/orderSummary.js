@@ -1,4 +1,5 @@
 export const orderSummarySorter = (arr) => {
+  
   let output = {};
   // sort orders
   arr.forEach((item) => {
