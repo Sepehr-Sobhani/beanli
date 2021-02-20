@@ -63,7 +63,10 @@ export default function Customer() {
         <Route path="/history">
           <UserInfo />
           <UserNav />
-          <PreviousOrders />
+          <PreviousOrders 
+            setCart={setCart}
+            setTotal={setTotal}
+          />
           <HomeButton />
           {cart.length > 0 && 
             <YourCartButton 

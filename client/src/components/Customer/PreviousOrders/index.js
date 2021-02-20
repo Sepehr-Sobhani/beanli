@@ -10,7 +10,7 @@ import { appContext } from "../../appContext";
 
 import "./styles.scss";
 
-function PreviousOrders() {
+function PreviousOrders(props) {
   
   const { state } = useContext(appContext);
   console.log('state orders ', state.orders)
@@ -18,8 +18,9 @@ function PreviousOrders() {
   const prevOrders = getOrdersInfo(state.orders);
 
   
-  const reorder = (orderId) => {
-    console.log(`I will order ${orderId}`);
+  const reorder = (order) => {
+    console.log(order)
+   props.setCart(order.orderItems)
   };
 
   const previous = prevOrders.map((order) => {
@@ -49,7 +50,7 @@ function PreviousOrders() {
         })}
         <div className="reorder-container">
           <p>Total ${convertCentsToDollars(order.totalPrice)}</p>
-          <Button style={{position: 'inherit'}} variant="contained" onClick={() => reorder(order.id)}>
+          <Button style={{position: 'inherit'}} variant="contained" onClick={() => reorder(order)}>
             Reorder
           </Button>
         </div>
