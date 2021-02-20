@@ -1,13 +1,13 @@
 INSERT INTO users
   (username, password, phone_number, type)
 VALUES
-  ('Travis', '123', '1111111111', 'o'),
+  ('James', '123', '1111111111', 'o'),
   ('Mary', '456', '2222222222', 'o'),
   ('Bob', '789', '3333333333', 'o'),
   ('Jack', '987', '4444444444', 'o'),
   ('Sydney', '654', '5555555555', 'o'),
   ('Sam', '321', '6666666666', 'o'),
-  ('Andy', '246', '7777777777', 'c'),
+  ('Ash', '246', '7777777777', 'c'),
   ('Kirk', '135', '8888888888', 'c');
 
 INSERT INTO stores
@@ -123,8 +123,8 @@ VALUES
 INSERT INTO customer_information
   (current_beans, lifetime_beans, tier, accelerator, user_id)
 VALUES
-  (300, 39999, 'One-Cup-A-Day', 1, 7),
-  (0, 0, 'One-Cup-A-Day', 1, 8);
+  (300, 4000, 'Master', 1.9, 7),
+  (0, 0, 'Basic', 1, 8);
 
 INSERT INTO orders
   (time_created, total_price, completed, store_id, user_id)

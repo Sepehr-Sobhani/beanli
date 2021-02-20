@@ -105,17 +105,18 @@ export default function useApplicationData() {
       .catch((err) => console.log(err.message));
   };
 
-  const updateBeans = (id, newCurrentBeans, newLifetimeBeans, tier, accelerator) => {
+  const updateBeans = (id, newCurrentBeans, newLifetimeBeans, newTier, newAccelerator) => {
     return axios.put(`/api/users/${id}`, {
       current_beans: newCurrentBeans,
       lifetime_beans: newLifetimeBeans, 
-      tier: tier,
-      accelerator: accelerator
+      tier: newTier,
+      accelerator: newAccelerator,
+
     })
     .then((response) => {
       setState((prev) => ({
         ...prev,
-        user:[{...prev.user[0], current_beans: newCurrentBeans, lifetime_beans: newLifetimeBeans}]
+        user:[{...prev.user[0], current_beans: newCurrentBeans, lifetime_beans: newLifetimeBeans, accelerator: newAccelerator, tier: newTier}]
       }))
     })
     .catch((error) => {
