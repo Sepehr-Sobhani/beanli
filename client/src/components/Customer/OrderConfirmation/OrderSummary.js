@@ -24,7 +24,8 @@ export default function StoreSummary(props) {
           return (
             <div className="item-container">
               <p>{item.name}</p>
-              <p>${convertCentsToDollars(item.price)}</p>
+              <p>{item.quantity}</p>
+              <p>${convertCentsToDollars(item.price * item.quantity)}</p>
             </div>
           );
         })}
