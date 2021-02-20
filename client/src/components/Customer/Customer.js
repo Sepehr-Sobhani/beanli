@@ -36,7 +36,7 @@ export default function Customer() {
     setCart((prev) => {
       return [...prev, {
         menuItemId: id,
-        itemName: name,
+        name: name,
         price: price,
         quantity: 1
       }]
