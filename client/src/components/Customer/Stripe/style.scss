@@ -1,9 +1,22 @@
+.stripe-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(https://images.unsplash.com/photo-1513530176992-0cf39c4cbed4?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80)
+}
+
 .payment-form {
-  flex: 1;
+  flex: 0.9;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding-top: 40%;
+  width: 80%;
+  // height: 100%;
+  margin: auto;
+  padding: 20px;
+  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
+  rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
 }
 
 input,
@@ -20,7 +33,6 @@ input,
   outline: 0;
   border-radius: 4px;
   background: white;
-  width: 80%;
 }
 
 input::placeholder {

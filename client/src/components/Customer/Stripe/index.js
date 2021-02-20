@@ -12,9 +12,11 @@ export default function Stripe(props) {
   );
 
   return (
+    <div className='stripe-container'>
     <Elements stripe={stripePromise}>
      <PaymentForm order={props} beansSpent={props.beansSpent}/>
     </Elements>
+    </div>
   );
 }
 
