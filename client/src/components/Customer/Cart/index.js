@@ -35,7 +35,7 @@ function Cart(props) {
             <>
               {props.cart[index].quantity > 0 && (
                 <>
-                  <p>{props.cart[index].itemName}</p>
+                  <p>{props.cart[index].name}</p>
                   <RemoveIcon
                     onClick={(event) =>
                       props.setCart((prev) => {

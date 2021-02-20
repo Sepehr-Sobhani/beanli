@@ -150,8 +150,12 @@ export default function PaymentForm(props) {
   return (
     <form className="payment-form" onSubmit={handleSubmit}>
       <div id="input">
-        <p>Your order confirmation will be sent to:</p>
+        {props.order.total === 0 && (
+          <p id="free">Thanks for your beans, this one's on us!</p>
+        )}
+        <label for="mobile">Your order confirmation will be sent to:</label>
         <input
+          id="mobile"
           name="mobile"
           placeholder="mobile"
           value={mobile}
@@ -159,11 +163,7 @@ export default function PaymentForm(props) {
           onChange={(event) => handleMobileChange(event.target.value)}
         />
         {props.order.total > 0 && <CardElement options={CardElementOptions} />}
-        {props.order.total === 0 && (
-          <p>Congratulations! You redeemed enough beans for a free order.</p>
-        )}
       </div>
-      <div></div>
       {formState === "error" && <h5>{error.message}</h5>}
       <div>
         <button
@@ -172,7 +172,7 @@ export default function PaymentForm(props) {
           type="submit"
         >
           {props.order.total !== 0
-            ? `Pay ${convertCentsToDollars(props.order.total)}`
+            ? `Pay $${convertCentsToDollars(props.order.total)}`
             : `continue`}
         </button>
       </div>
