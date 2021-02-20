@@ -19,8 +19,8 @@ export default function OrderConfirmation(props) {
 
  
   return(
-    <div>
-      <h3>Cool Beans, Thank you for your order!</h3>
+    <div className='order-summary'>
+      <h3>Cool Beans, thanks for your order!</h3>
       <p>Your order will be ready for collection in {collectionTime} minutes at {store.address}</p>
       <StoreMap 
         lat={store.latitude} 

@@ -1,9 +1,48 @@
 .leaflet-container {
-  height: 500px;
+  height: 400px;
   width: 90%;
+  margin: 2rem 0 0 0;
+  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
+  rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
 }
 
-.item-container {
+.orders-container {
+  width: 100%;
+  
+  .item-container {
+    display: flex;
+    justify-content: space-evenly;
+
+    .item-name {
+      width: 12rem;
+    }
+  }
+  
+}
+
+.order-summary {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0.5rem 0;
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin: 0 0.5rem;
+  }
+
+  #beans-earned {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  #order-total {
+    margin: 1rem 0;
+  }
+
+
 }

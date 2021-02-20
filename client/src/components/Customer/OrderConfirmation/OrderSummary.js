@@ -14,23 +14,23 @@ export default function StoreSummary(props) {
   const beansEarnedForDisplay = Math.floor(beansEarned(userAccelerator, mostRecentTotal) / 100)
 
   return (
-    <div>
+    <>
       <h3>Order Summary</h3>
-      <p>
+      <p id='beans-earned'>
         {`You have earned ${beansEarnedForDisplay} bean${beansEarnedForDisplay!==1 ? 's' : ''}!`}
       </p>
       <div className="orders-container">
         {orderItems.map((item) => {
           return (
             <div className="item-container">
-              <p>{item.name}</p>
-              <p>{item.quantity}</p>
+              <p className="item-name">{item.name}</p>
+              <p>({item.quantity})</p>
               <p>${convertCentsToDollars(item.price * item.quantity)}</p>
             </div>
           );
         })}
       </div>
-      <p>total: ${convertCentsToDollars(mostRecentTotal)}</p>
-    </div>
+      <p id='order-total'>Total: ${convertCentsToDollars(mostRecentTotal)}</p>
+    </>
   );
 }
