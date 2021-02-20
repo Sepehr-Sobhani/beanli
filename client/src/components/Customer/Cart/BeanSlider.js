@@ -36,11 +36,13 @@ export default function BeanSlider(props) {
       value={sliderView}
       min={0}
       max={maxForSlider(userBeans, totalInCart, beanDollarRatio)}
+      step={100}
       onChange={handleChange}
       onChangeCommitted={handleChangeCommitted}
       valueLabelDisplay="auto"
       // Allows slider to show user bean in a Dollar context
       valueLabelFormat={(value) => Math.floor(value / 100)}
+
     />
   );
 }
