@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { convertCentsToDollars } from "../../../helpers/math";
 import { appContext } from "../../appContext";
 import { getTotal } from "../../../helpers/getTotal";
+import bean from "../../../assets/logo/beans.png";
 import { getOrdersInfo } from "../../../helpers/selectors";
 import bean from "../../../assets/bean.png";
 
@@ -21,7 +22,7 @@ function PreviousOrders(props) {
 
   const previous = prevOrders.map((order) => {
     return (
-      <div>
+      <div className="prev-order-container">
         {order.orderItems.map((item) => {
           return (
             <div className="prev-orders">
@@ -47,13 +48,14 @@ function PreviousOrders(props) {
         <div className="reorder-container">
           <p>Total ${convertCentsToDollars(order.totalPrice)}</p>
           {order.totalPrice < getTotal(order.orderItems) && (
-            <img src={bean} alt="Beans Spent" width="20" height="20"></img>
+            <img src={bean} alt="Bean" width="30" height="30"></img>
           )}
           <Button
             style={{ position: "inherit" }}
             variant="contained"
-            onClick={() => reorder(order)}
+            onClick={() => reorder(order.id)}
           >
+       }
             Reorder
           </Button>
         </div>
