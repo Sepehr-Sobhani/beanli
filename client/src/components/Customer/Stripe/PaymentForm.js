@@ -7,13 +7,15 @@ import "./style.scss";
 import { beansEarned, checkTier, convertCentsToDollars } from "../../../helpers/math";
 
 export default function PaymentForm(props) {
+  const { state, postOrder, updateBeans } = useContext(appContext);
   const [formState, setFormState] = useState("idle");
   const [error, setError] = useState(null);
-  const { state, postOrder, updateBeans } = useContext(appContext);
+  const [mobile, setMobile] = useState(state.user[0].phone_number)
   const stripe = useStripe();
   const elements = useElements();
   const history = useHistory();
 
+  // Creating the order object that will be posted to the DB
   const orderData = (order) => {
     const d = new Date(Date.now());
     let dateString = `${d.getFullYear()}-${d.getMonth()}-${d.getDay()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
@@ -56,6 +58,7 @@ export default function PaymentForm(props) {
       setError(null);
       setFormState("submitted");
 
+    // Calculating new values for CurrentBeans, LifetimeBeans, Tier and Accelerator
     const userId =  state.currentUser;
     const {accelerator, tier, current_beans:currentBeans, lifetime_beans:currentLifetimeBeans} = state.user[0]
     const beansSpent = props.beansSpent
@@ -104,16 +107,29 @@ export default function PaymentForm(props) {
     hidePostalCode: true,
   };
 
+  const handleMobileChange = (number) => {
+    console.log(number)
+    setMobile(number.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3"))
+  }
+
   return (
     <form className="payment-form" onSubmit={handleSubmit}>
       <div id="input">
+        <p>Your order confirmation will be sent to:</p>
         <input
           name="mobile"
           type="tel"
           placeholder="mobile"
-          value={state.user[0].phone_number}
+          value={mobile}
+          maxLength={12}
+          onChange={event=>handleMobileChange(event.target.value)}
         />
+        { props.order.total > 0 && (
         <CardElement options={CardElementOptions} />
+        )}
+        {props.order.total === 0 && (
+          <p>Congratulations! You redeemed enough beans for a free order.</p>
+        )}
       </div>
       <div></div>
       {formState === "error" && <h5>{error.message}</h5>}
@@ -123,7 +139,7 @@ export default function PaymentForm(props) {
           disabled={formState === "submitting"}
           type="submit"
         >
-          Pay ${convertCentsToDollars(props.order.total)}
+          {props.order.total !== 0 ? `Pay ${convertCentsToDollars(props.order.total)}` : `continue`}
         </button>
       </div>
     </form>
