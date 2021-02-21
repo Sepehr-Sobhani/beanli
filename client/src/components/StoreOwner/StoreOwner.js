@@ -18,18 +18,30 @@ const dndColumns = {
   },
 };
 
-const onDragEnd = ({ source, destination }, columns, setColumns) => {
+const onDragEnd = (
+  { source, destination },
+  columns,
+  setColumns,
+  orderUpdPar,
+  setOrderUpdPar
+) => {
   //Returns order to the same place if no destination has set
   if (!destination) return;
 
   //Takes order to a new column
   if (source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId];
+    console.log("SOURCE Col: ", sourceColumn);
     const destColumn = columns[destination.droppableId];
     const sourceItems = [...sourceColumn.items];
     const destItems = [...destColumn.items];
     const [removed] = sourceItems.splice(source.index, 1);
     destItems.splice(destination.index, 0, removed);
+    setOrderUpdPar({
+      ...orderUpdPar,
+      id: sourceColumn.id,
+      username: sourceColumn.username,
+    });
     setColumns({
       ...columns,
       [source.droppableId]: {
@@ -61,6 +73,10 @@ const StoreOwner = () => {
   const [columns, setColumns] = useState(dndColumns);
   // Store id is hard coded here
   const [storeId, setStoreId] = useState(1);
+  const [orderUpdPar, setOrderUpdPar] = useState({ id: "", username: "" });
+
+  console.log("ORDER UPDATE PAR: ", orderUpdPar);
+  console.log("Completed column:", columns["2"]);
 
   useInterval(() => {
     axios
@@ -88,27 +104,37 @@ const StoreOwner = () => {
       isFirstRun.current = false;
       return;
     }
- 
-    const orderId = columns["2"].items[completedOrderLength - 1].id
+
+    // const completedItemCounter = columns["2"].items.reduce((acc, cur) => {
+    //   return acc + cur.orders.length;
+    // }, 0);
+
+    // if (completedItemCounter > 6) {
+    //   // columns["2"].items.shift();
+    //   console.log("More Than 6 here: ", columns["2"].items);
+    // }
+
+    const orderId = columns["2"].items[completedOrderLength - 1].id;
     const username = columns["2"].items[completedOrderLength - 1].username;
     const orderUpdateParams = {
-      
       order_id: orderId,
       store_id: storeId,
       username: username,
     };
 
-    axios.put("/api/order", orderUpdateParams)
-    .then(() => {
-    //   const confirmMessage = {
-    //     message: {
-    //       to: "+16044404033",
-    //       body: `Dear ${username}, Your order is Ready!! Enjoy!!`,
-    //     },
-    //   };
-    //   axios.post("/api/messages", confirmMessage);
-     })
-    .catch((err) => console.error({ error: err.message }))
+    axios
+      .put("/api/order", orderUpdateParams)
+      .then(() => {
+        console.log("ORDER UPDATED");
+        //   const confirmMessage = {
+        //     message: {
+        //       to: "+16044404033",
+        //       body: `Dear ${username}, Your order is Ready!! Enjoy!!`,
+        //     },
+        //   };
+        //   axios.post("/api/messages", confirmMessage);
+      })
+      .catch((err) => console.error({ error: err.message }));
   }, [completedOrderLength]);
 
   return (
@@ -116,7 +142,9 @@ const StoreOwner = () => {
       <StoreNav />
       <div className="dnd-container">
         <DragDropContext
-          onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
+          onDragEnd={(result) =>
+            onDragEnd(result, columns, setColumns, orderUpdPar, setOrderUpdPar)
+          }
         >
           {Object.entries(columns).map(([columnId, column], index) => {
             return (

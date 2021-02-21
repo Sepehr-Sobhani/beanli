@@ -38,7 +38,7 @@ module.exports = (db) => {
 
   // ADD POST /order/  "Add New Order"
   router.post("/order", (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     // Getting order values as a JSON file
     // order_items is an array of objects [{menu_id: #}, ...]
     const {
@@ -85,9 +85,13 @@ module.exports = (db) => {
 
   //EDIT PUT /order  "Update Order Status"
   router.put("/order", (req, res) => {
-    const queryParams = [req.body.order_id];
+    const queryParams = [
+      req.body.order_id,
+      req.body.store_id,
+      `%${req.body.username}%`,
+    ];
     db.query(
-      `UPDATE orders SET completed = not completed WHERE id = $1`,
+      `UPDATE orders SET completed = true WHERE id = $1 AND store_id = $2 AND user_id = (SELECT id FROM users WHERE username iLike $3);`,
       queryParams
     )
       .then(() => res.json({ message: "order updated!" }))
