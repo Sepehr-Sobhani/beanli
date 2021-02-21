@@ -19,54 +19,64 @@ function PreviousOrders(props) {
     props.setCart(order.orderItems);
   };
 
-  const previous = prevOrders.map((order) => {
-    return (
-      <div className="prev-order-container">
-        {order.orderItems.map((item) => {
-          return (
-            <div className="prev-orders">
-              <Card className="root">
-                <CardContent className="content">
-                  <div className="order-item-details">
-                    <p>{item.name}</p>
-                  </div>
-                  <div className="price-quantity-container">
-                    <p>Qty: {item.quantity}</p>
-                    <p>${convertCentsToDollars(item.price * item.quantity)}</p>
-                  </div>
-                </CardContent>
-                <CardMedia
-                  className="cover"
-                  image={item.image}
-                  title={item.name}
-                />
-              </Card>
-            </div>
-          );
-        })}
-        <div className="reorder-container">
-          <p>Total ${convertCentsToDollars(order.totalPrice)}</p>
-          {order.totalPrice < getTotal(order.orderItems) && (
-            <img src={bean} alt="Bean" width="30" height="30"></img>
-          )}
-          <Button
-            style={{ position: "inherit" }}
-            variant="contained"
-            onClick={() => reorder(order)}
-          >
-            Reorder
-          </Button>
+  if (prevOrders) {
+    const previous = prevOrders.map((order) => {
+      return (
+        <div className="prev-order-container">
+          {order.orderItems.map((item) => {
+            return (
+              <div className="prev-orders">
+                <Card className="root">
+                  <CardContent className="content">
+                    <div className="order-item-details">
+                      <p>{item.name}</p>
+                    </div>
+                    <div className="price-quantity-container">
+                      <p>Qty: {item.quantity}</p>
+                      <p>
+                        ${convertCentsToDollars(item.price * item.quantity)}
+                      </p>
+                    </div>
+                  </CardContent>
+                  <CardMedia
+                    className="cover"
+                    image={item.image}
+                    title={item.name}
+                  />
+                </Card>
+              </div>
+            );
+          })}
+          <div className="reorder-container">
+            <p>Total ${convertCentsToDollars(order.totalPrice)}</p>
+            {order.totalPrice < getTotal(order.orderItems) && (
+              <img src={bean} alt="Bean" width="30" height="30"></img>
+            )}
+            <Button
+              style={{ position: "inherit" }}
+              variant="contained"
+              onClick={() => reorder(order)}
+            >
+              Reorder
+            </Button>
+          </div>
         </div>
+      );
+    });
+
+    return (
+      <div className="previous-order-root">
+        <h3 className="prev-order-title">Previous Orders</h3>
+        {previous}
       </div>
     );
-  });
-
-  return (
-    <div className="previous-order-root">
-      <h3 className="prev-order-title">Previous Orders</h3>
-      {previous}
-    </div>
-  );
+  } else {
+    return (
+      <div className="previous-order-root">
+        <h3 className="prev-order-title">Previous Orders</h3>
+      </div>
+    );
+  }
 }
 
 export default PreviousOrders;
