@@ -178,7 +178,7 @@ export default function PaymentForm(props) {
         />
         {props.order.total > 0 && <CardElement options={CardElementOptions} />}
       </div>
-      {formState === "error" && <h5>{error.message}</h5>}
+      {formState === "error" && <p id="error">{error.message}</p>}
       <div>
         <button
           className="pay-button"
