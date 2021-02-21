@@ -14,21 +14,21 @@ export const filterMenuItems = function (menuItems) {
 //Organizes data from database to usable format in dnd component
 export const orderOrganizer = (array) => {
   const organizedData = [];
-  const customerNames = [];
+  const orderIds = [];
   for (const order of array) {
     const orderObj = {};
     orderObj["id"] = order.id;
     orderObj["username"] = order.username;
     orderObj["orders"] = [];
-    if (!customerNames.includes(order["username"])) {
+    if (!orderIds.includes(order["id"])) {
       organizedData.push(orderObj);
     }
-    customerNames.push(order["username"]);
+    orderIds.push(order["id"]);
   }
 
   for (const value of organizedData) {
     for (const data of array) {
-      if (value["username"] === data["username"]) {
+      if (value["id"] === data["id"]) {
         const orderObj = {};
         orderObj[data["item_name"]] = data["item_qty"];
         value["orders"].push(orderObj);
