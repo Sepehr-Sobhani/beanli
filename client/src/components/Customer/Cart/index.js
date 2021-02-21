@@ -31,7 +31,7 @@ function Cart(props) {
       <form autoComplete="off" onSubmit={(event) => handleSubmit(event)}>
         {props.cart.map((item, index) => {
           return (
-            <div>
+            <div key={index}>
               {props.cart[index].quantity > 0 && (
                 <div className="cart-item-container">
                   <p>{props.cart[index].name}</p>

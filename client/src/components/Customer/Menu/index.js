@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { filterMenuItems } from "../../../helpers/selectors";
 import { appContext } from "../../appContext";
 import "./styles.scss";
+import React from 'react'
 
 export default function Menu(props) {
   const { state } = useContext(appContext);
@@ -16,9 +17,9 @@ export default function Menu(props) {
   };
 
   return Object.entries(filterMenuItems(state.menuItems)).map(
-    ([key, value]) => {
+    ([key, value], index) => {
       return (
-        <>
+        <React.Fragment key={index}>
           <div className="menu-category-title">{key}</div>
           <div className="category-container">
             <GridList
@@ -31,13 +32,13 @@ export default function Menu(props) {
                   key={tile.id}
                   onClick={() => handleClick(tile.id, tile.name, tile.price)}
                 >
-                  <img src={tile.image} alt={tile.name} />
+                  <img src={tile.image} alt={tile.name}/>
                   <GridListTileBar
                     className="titleBar"
                     title={tile.name}
                     actionIcon={
                       <IconButton aria-label={`star ${tile.title}`}>
-                        <AddIcon className="title" />
+                        <AddIcon className="title"/>
                       </IconButton>
                     }
                   />
@@ -45,7 +46,7 @@ export default function Menu(props) {
               ))}
             </GridList>
           </div>
-        </>
+          </React.Fragment>
       );
     }
   );

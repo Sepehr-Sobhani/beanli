@@ -1,14 +1,14 @@
-import './styles.scss'
-import Logout from "./Logout"
-import OrderHistory from "./OrderHistory"
+import "./styles.scss";
+import Logout from "./Logout";
+import OrderHistory from "./OrderHistory";
 
 function UserNav() {
-  return(
-    <div className='user-nav-container'>
-      <OrderHistory route="/"/>
+  return (
+    <div className="user-nav-container">
+      <OrderHistory route="/" />
       <Logout route="/" />
     </div>
-  )
+  );
 }
 
-export default UserNav
+export default UserNav;
