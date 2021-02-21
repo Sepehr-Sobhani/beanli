@@ -22,7 +22,6 @@ export default function StoreInfo() {
       backgroundColor: 'rgba(255, 255, 255, 0.7)',
     }
   }
-
   return (
     <>
       <div className="store-info-container" style={storeInfoContainerStyle.image}>
