@@ -44,6 +44,7 @@ function Cart(props) {
                           // remove item from cart
                           cartCopy[index].quantity === 0 &&
                             cartCopy.splice(index, 1);
+                          console.log(cartCopy);
                           return cartCopy;
                         })
                       }
@@ -90,7 +91,11 @@ function Cart(props) {
           setBeansSpent={props.setBeansSpent}
           total={props.cart}
         />
-        <input type="submit" value="Bean me up Scottie!" />
+        <input
+          type="submit"
+          value="Bean me up Scottie!"
+          disabled={!props.cart.length ? true : false}
+        />
       </form>
     </div>
   );
