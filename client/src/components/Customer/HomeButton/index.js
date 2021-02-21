@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 const fabStyle = {
   height: 30,
-  width: 30,
+  width: 35,
   opacity: "50%",
   backgroundColor: "black",
 };
