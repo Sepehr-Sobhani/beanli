@@ -14,11 +14,18 @@ export const convertCentsToDollars = function (price) {
   return (price / 100).toFixed(2);
 };
 
-export const beansEarned = function (accelerator, centsCharged, prev = 0) {
-  // user can only earn beans on price charged and not total price
+export const beansEarned = function (centsCharged, accelerator, prev = 0) {
+  console.log(accelerator, centsCharged,prev )
+  const dollarNoCents = Math.floor(centsCharged / 100)
+  console.log('dollarNoCents', dollarNoCents)
+  const earnedBeforeRatio = Math.floor(dollarNoCents * accelerator) * 100
+  console.log('earnedBeforeRatio', earnedBeforeRatio)
+  // user can only earn beans on price paid and only on a full dollar(no cents) and not total price charged
   // Ratio of beans is 50c:1 bean, user earns that on half the cash paid
-  return (centsCharged / beanDollarRatio * accelerator ) * earnOnSpendRatio + prev;
+  // The accelerator is also rounded down to prevent 
+  return earnedBeforeRatio / beanDollarRatio * earnOnSpendRatio + prev;
 };
+
 
 export const totalFromCart = function (cart) {
   return cart.reduce((sum, cur) => sum + cur.price * cur.quantity, 0);

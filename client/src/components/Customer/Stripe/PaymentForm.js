@@ -85,15 +85,16 @@ export default function PaymentForm(props) {
         setFormState("submitted");
 
         console.log("********************************");
+        console.log("UserID:", userId);
         console.log("OrderTotal-CashSpent:", props.order.total);
         console.log("beansSpent:", beansSpent);
-        console.log("UserID:", userId);
-        console.log("currentLifeTimeBeans:", currentLifetimeBeans);
+        console.log("prevCurrentBeans:", currentBeans);
         console.log("newCurrentBeans:", newCurrent);
+        console.log("currentLifeTimeBeans:", currentLifetimeBeans);
         console.log("newLifetimeBeans:", newLifetime);
         console.log("prevTier:", tier);
-        console.log("Currentaccelerator", accelerator);
         console.log("newTier", newTier);
+        console.log("Currentaccelerator", accelerator);
         console.log("newAccelerator", newAccelerator);
         console.log("********************************");
 
@@ -113,6 +114,21 @@ export default function PaymentForm(props) {
         setFormState("error");
       }
     } else {
+
+      console.log("********************************");
+      console.log("UserID:", userId);
+      console.log("OrderTotal-CashSpent:", props.order.total);
+      console.log("beansSpent:", beansSpent);
+      console.log("prevCurrentBeans:", currentBeans);
+      console.log("newCurrentBeans:", newCurrent);
+      console.log("currentLifeTimeBeans:", currentLifetimeBeans);
+      console.log("newLifetimeBeans:", newLifetime);
+      console.log("prevTier:", tier);
+      console.log("newTier", newTier);
+      console.log("Currentaccelerator", accelerator);
+      console.log("newAccelerator", newAccelerator);
+      console.log("********************************");
+
       await postOrder(order);
       await updateBeans(
         userId,

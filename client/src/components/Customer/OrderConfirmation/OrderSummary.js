@@ -4,14 +4,14 @@ import { appContext } from "../../appContext";
 import { beansEarned, convertCentsToDollars } from "../../../helpers/math";
 import { getOrdersInfo } from "../../../helpers/selectors";
 
-export default function StoreSummary(props) {
+export default function StoreSummary() {
   const context = useContext(appContext);
   const orders = context.state.orders;
   const { totalPrice: mostRecentTotal, orderItems } = getOrdersInfo(orders)[
     "0"
   ];
   const userAccelerator = context.state.user[0].accelerator;
-  const beansEarnedForDisplay = Math.floor(beansEarned(userAccelerator, mostRecentTotal) / 100)
+  const beansEarnedForDisplay = beansEarned(mostRecentTotal, userAccelerator) / 100
 
   return (
     <>
