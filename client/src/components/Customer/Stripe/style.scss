@@ -84,7 +84,13 @@ input:focus,
   background-color: transparent;
 }
 
+#error {
+  background-color: transparent;
+  color: red;
+}
+
 #mobile {
+  color: rgb(97, 85, 68);
   width: 100%;
 }
 
