@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Slider from "@material-ui/core/Slider";
 import { appContext } from "../../appContext";
 import {
@@ -8,9 +8,12 @@ import {
 } from "../../../helpers/math";
 
 export default function BeanSlider(props) {
-  console.log(totalFromCart(props.total));
-
   const totalInCart = totalFromCart(props.total);
+
+  const totalItemsInCart = props.total.reduce(
+    (sum, cur) => sum + cur.quantity,
+    0
+  );
 
   const [sliderView, setSliderView] = useState(0);
   const [sliderValue, setSliderValue] = useState(0);
@@ -20,6 +23,11 @@ export default function BeanSlider(props) {
   const handleChange = (event, newValue) => {
     setSliderView(newValue);
   };
+
+  useEffect(() => {
+    setSliderView(0);
+    setSliderValue(0);
+  }, [totalItemsInCart]);
 
   const handleChangeCommitted = (event, newValue) => {
     if (newValue > sliderValue) {
