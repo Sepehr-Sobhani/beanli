@@ -35,6 +35,7 @@ export default function BeanSlider(props) {
     <div className="slider-container">
       <Slider
         value={sliderView}
+        step={100}
         min={0}
         max={maxForSlider(userBeans, totalInCart, beanDollarRatio)}
         onChange={handleChange}
