@@ -32,17 +32,17 @@ export default function BeanSlider(props) {
   };
 
   return (
-    <Slider
-      value={sliderView}
-      min={0}
-      max={maxForSlider(userBeans, totalInCart, beanDollarRatio)}
-      step={100}
-      onChange={handleChange}
-      onChangeCommitted={handleChangeCommitted}
-      valueLabelDisplay="auto"
-      // Allows slider to show user bean in a Dollar context
-      valueLabelFormat={(value) => Math.floor(value / 100)}
-
-    />
+    <div className="slider-container">
+      <Slider
+        value={sliderView}
+        min={0}
+        max={maxForSlider(userBeans, totalInCart, beanDollarRatio)}
+        onChange={handleChange}
+        onChangeCommitted={handleChangeCommitted}
+        valueLabelDisplay="auto"
+        // Allows slider to show user bean in a Dollar context
+        valueLabelFormat={(value) => Math.floor(value / 100)}
+      />
+    </div>
   );
 }
