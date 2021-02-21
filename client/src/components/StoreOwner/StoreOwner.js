@@ -6,6 +6,7 @@ import OrderColumns from "./OrdersDashboard/OrderColumns";
 import axios from "axios";
 import { orderOrganizer } from "../../helpers/selectors";
 import { useInterval } from "../../helpers/useInterval";
+import { useParams } from "react-router-dom";
 
 const dndColumns = {
   1: {
@@ -21,12 +22,8 @@ const dndColumns = {
 const StoreOwner = () => {
   const [columns, setColumns] = useState(dndColumns);
   // Store id is hard coded here
-  const [storeId, setStoreId] = useState(1);
+  const storeId = useParams()["store_id"];
   const [orderUpdPar, setOrderUpdPar] = useState({ id: "", username: "" });
-
-  console.log("ORDER UPDATE PAR: ", orderUpdPar);
-  console.log("ORDER column:", columns["1"]);
-  console.log("Completed column:", columns["2"]);
 
   const onDragEnd = (
     { source, destination },
@@ -111,7 +108,6 @@ const StoreOwner = () => {
 
     if (completedItemCounter >= 6) {
       columns["2"].items.pop();
-      console.log("More Than 6 here: ", columns["2"].items);
     }
 
     const orderUpdateParams = {
@@ -123,7 +119,6 @@ const StoreOwner = () => {
     axios
       .put("/api/order", orderUpdateParams)
       .then(() => {
-        console.log("ORDER UPDATED");
         //   const confirmMessage = {
         //     message: {
         //       to: "+16044404033",
@@ -137,7 +132,7 @@ const StoreOwner = () => {
 
   return (
     <div>
-      <StoreNav />
+      <StoreNav storeId={storeId} />
       <div className="dnd-container">
         <DragDropContext
           onDragEnd={(result) =>
