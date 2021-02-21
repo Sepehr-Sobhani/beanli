@@ -26,7 +26,7 @@ export default function App() {
           <Route path="/customer">
             <Customer />
           </Route>
-          <Route path="/storeowner">
+          <Route path="/storeowner/:store_id">
             <StoreOwner />
           </Route>
         </Switch>
