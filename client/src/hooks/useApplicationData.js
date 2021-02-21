@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { distance } from "../helpers/data";
+import { beansEarned } from "../helpers/math";
 
 export default function useApplicationData() {
   const [state, setState] = useState({
@@ -13,6 +14,7 @@ export default function useApplicationData() {
         phone_number: null,
         tier: "Basic",
         type: "c",
+        recentOrderBeansEarned: 0,
       },
     ],
     currentUser: 7,
@@ -105,7 +107,7 @@ export default function useApplicationData() {
       .catch((err) => console.log(err.message));
   };
 
-  const updateBeans = (id, newCurrentBeans, newLifetimeBeans, newTier, newAccelerator) => {
+  const updateBeans = (id, newCurrentBeans, newLifetimeBeans, newTier, newAccelerator, beansEarned) => {
     return axios.put(`/api/users/${id}`, {
       current_beans: newCurrentBeans,
       lifetime_beans: newLifetimeBeans, 
@@ -116,7 +118,7 @@ export default function useApplicationData() {
     .then((response) => {
       setState((prev) => ({
         ...prev,
-        user:[{...prev.user[0], current_beans: newCurrentBeans, lifetime_beans: newLifetimeBeans, accelerator: newAccelerator, tier: newTier}]
+        user:[{...prev.user[0], current_beans: newCurrentBeans, lifetime_beans: newLifetimeBeans, accelerator: newAccelerator, tier: newTier, recentOrderBeansEarned: beansEarned}]
       }))
     })
     .catch((error) => {
