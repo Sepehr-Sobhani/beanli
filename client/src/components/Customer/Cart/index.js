@@ -34,7 +34,7 @@ function Cart(props) {
             <div>
               {props.cart[index].quantity > 0 && (
                 <div className="cart-item-container">
-                  <p>{props.cart[index].itemName}</p>
+                  <p>{props.cart[index].name}</p>
                   <div className="input-control">
                     <RemoveIcon
                       onClick={(event) =>
