@@ -21,11 +21,16 @@ export default function PaymentForm(props) {
 
   // Creating the order object that will be posted to the DB
   const orderData = (order) => {
-    const d = new Date(Date.now());
-    let dateString = `${d.getFullYear()}-${d.getMonth()}-${d.getDay()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+    const generateTimeStamp = (date) => {
+      const year = date.getFullYear();
+      const month = `0${date.getMonth() + 1}`.slice(-2);
+      const day = date.getDate();
+      const time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+      return `${year}-${month}-${day} ${time}`;
+    };
 
     const completeOrder = {
-      time_created: dateString,
+      time_created: generateTimeStamp(new Date(Date.now())),
       total_price: order.total,
       completed: false,
       user_id: state.currentUser,

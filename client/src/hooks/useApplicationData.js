@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { distance } from "../helpers/data";
-import { beansEarned } from "../helpers/math";
 
 export default function useApplicationData() {
   const [state, setState] = useState({
@@ -94,6 +93,7 @@ export default function useApplicationData() {
   };
 
   const postOrder = (order) => {
+    console.log("Received by postOrder:", order);
     return axios({
       method: "post",
       url: "/api/order",
@@ -107,24 +107,40 @@ export default function useApplicationData() {
       .catch((err) => console.log(err.message));
   };
 
-  const updateBeans = (id, newCurrentBeans, newLifetimeBeans, newTier, newAccelerator, beansEarned) => {
-    return axios.put(`/api/users/${id}`, {
-      current_beans: newCurrentBeans,
-      lifetime_beans: newLifetimeBeans, 
-      tier: newTier,
-      accelerator: newAccelerator,
-
-    })
-    .then((response) => {
-      setState((prev) => ({
-        ...prev,
-        user:[{...prev.user[0], current_beans: newCurrentBeans, lifetime_beans: newLifetimeBeans, accelerator: newAccelerator, tier: newTier, recentOrderBeansEarned: beansEarned}]
-      }))
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
+  const updateBeans = (
+    id,
+    newCurrentBeans,
+    newLifetimeBeans,
+    newTier,
+    newAccelerator,
+    beansEarned
+  ) => {
+    return axios
+      .put(`/api/users/${id}`, {
+        current_beans: newCurrentBeans,
+        lifetime_beans: newLifetimeBeans,
+        tier: newTier,
+        accelerator: newAccelerator,
+      })
+      .then((response) => {
+        setState((prev) => ({
+          ...prev,
+          user: [
+            {
+              ...prev.user[0],
+              current_beans: newCurrentBeans,
+              lifetime_beans: newLifetimeBeans,
+              accelerator: newAccelerator,
+              tier: newTier,
+              recentOrderBeansEarned: beansEarned,
+            },
+          ],
+        }));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return { state, setStore, postOrder, updateBeans };
 }

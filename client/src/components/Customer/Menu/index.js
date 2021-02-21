@@ -15,7 +15,7 @@ export default function Menu(props) {
   const handleClick = (id, name, price) => {
     props.updateCart(id, name, price);
   };
-
+  if (!state.menuItems.message) {
   return Object.entries(filterMenuItems(state.menuItems)).map(
     ([key, value], index) => {
       return (
@@ -50,4 +50,8 @@ export default function Menu(props) {
       );
     }
   );
+  } else {
+    return null;
+  }
+
 }
