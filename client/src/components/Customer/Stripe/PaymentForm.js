@@ -58,6 +58,10 @@ export default function PaymentForm(props) {
       lifetime_beans: currentLifetimeBeans,
     } = state.user[0];
     const beansSpent = props.beansSpent;
+    const beansEarnedForTransaction = beansEarned(
+      props.order.total,
+      accelerator
+    );
     const newCurrent =
       currentBeans - beansSpent + beansEarned(props.order.total, accelerator);
     const newLifetime = beansEarned(
@@ -68,6 +72,23 @@ export default function PaymentForm(props) {
     const { name: newTier, accelerator: newAccelerator } = checkTier(
       newLifetime
     );
+
+    const log = () => {
+      console.log("********************************");
+      console.log("UserID:", userId);
+      console.log("OrderTotal-CashSpent:", props.order.total);
+      console.log("beansSpent:", beansSpent);
+      console.log("prevCurrentBeans:", currentBeans);
+      console.log("beansEarned:", beansEarnedForTransaction);
+      console.log("newCurrentBeans:", newCurrent);
+      console.log("currentLifeTimeBeans:", currentLifetimeBeans);
+      console.log("newLifetimeBeans:", newLifetime);
+      console.log("prevTier:", tier);
+      console.log("newTier", newTier);
+      console.log("Currentaccelerator", accelerator);
+      console.log("newAccelerator", newAccelerator);
+      console.log("********************************");
+    };
 
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
@@ -84,19 +105,7 @@ export default function PaymentForm(props) {
         setError(null);
         setFormState("submitted");
 
-        console.log("********************************");
-        console.log("UserID:", userId);
-        console.log("OrderTotal-CashSpent:", props.order.total);
-        console.log("beansSpent:", beansSpent);
-        console.log("prevCurrentBeans:", currentBeans);
-        console.log("newCurrentBeans:", newCurrent);
-        console.log("currentLifeTimeBeans:", currentLifetimeBeans);
-        console.log("newLifetimeBeans:", newLifetime);
-        console.log("prevTier:", tier);
-        console.log("newTier", newTier);
-        console.log("Currentaccelerator", accelerator);
-        console.log("newAccelerator", newAccelerator);
-        console.log("********************************");
+        log();
 
         await postOrder(order);
         await updateBeans(
@@ -104,7 +113,8 @@ export default function PaymentForm(props) {
           newCurrent,
           newLifetime,
           newTier,
-          newAccelerator
+          newAccelerator,
+          beansEarnedForTransaction
         );
 
         props.handleClose();
@@ -114,20 +124,7 @@ export default function PaymentForm(props) {
         setFormState("error");
       }
     } else {
-
-      console.log("********************************");
-      console.log("UserID:", userId);
-      console.log("OrderTotal-CashSpent:", props.order.total);
-      console.log("beansSpent:", beansSpent);
-      console.log("prevCurrentBeans:", currentBeans);
-      console.log("newCurrentBeans:", newCurrent);
-      console.log("currentLifeTimeBeans:", currentLifetimeBeans);
-      console.log("newLifetimeBeans:", newLifetime);
-      console.log("prevTier:", tier);
-      console.log("newTier", newTier);
-      console.log("Currentaccelerator", accelerator);
-      console.log("newAccelerator", newAccelerator);
-      console.log("********************************");
+      log();
 
       await postOrder(order);
       await updateBeans(
@@ -135,7 +132,8 @@ export default function PaymentForm(props) {
         newCurrent,
         newLifetime,
         newTier,
-        newAccelerator
+        newAccelerator,
+        beansEarnedForTransaction
       );
       props.handleClose();
       history.push("/orderconfirmed");

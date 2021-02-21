@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { appContext } from "../../appContext";
 
-import { beansEarned, convertCentsToDollars } from "../../../helpers/math";
+import { convertCentsToDollars } from "../../../helpers/math";
 import { getOrdersInfo } from "../../../helpers/selectors";
 
 export default function StoreSummary() {
@@ -10,14 +10,16 @@ export default function StoreSummary() {
   const { totalPrice: mostRecentTotal, orderItems } = getOrdersInfo(orders)[
     "0"
   ];
-  const userAccelerator = context.state.user[0].accelerator;
-  const beansEarnedForDisplay = beansEarned(mostRecentTotal, userAccelerator) / 100
+  const beansEarnedForDisplay =
+    context.state.user[0].recentOrderBeansEarned / 100 || 0;
 
   return (
     <>
       <h3>Order Summary</h3>
-      <p id='beans-earned'>
-        {`You have earned ${beansEarnedForDisplay} bean${beansEarnedForDisplay!==1 ? 's' : ''}!`}
+      <p id="beans-earned">
+        {`You have earned ${beansEarnedForDisplay} bean${
+          beansEarnedForDisplay !== 1 ? "s" : ""
+        }!`}
       </p>
       <div className="orders-container">
         {orderItems.map((item) => {
@@ -30,7 +32,7 @@ export default function StoreSummary() {
           );
         })}
       </div>
-      <p id='order-total'>Total: ${convertCentsToDollars(mostRecentTotal)}</p>
+      <p id="order-total">Total: ${convertCentsToDollars(mostRecentTotal)}</p>
     </>
   );
 }
