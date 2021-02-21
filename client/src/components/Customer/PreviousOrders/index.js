@@ -20,12 +20,12 @@ function PreviousOrders(props) {
   };
 
   if (prevOrders) {
-    const previous = prevOrders.map((order) => {
+    const previous = prevOrders.map((order, index) => {
       return (
-        <div className="prev-order-container">
-          {order.orderItems.map((item) => {
+        <div className="prev-order-container" key={index}>
+          {order.orderItems.map((item, index) => {
             return (
-              <div className="prev-orders">
+              <div className="prev-orders" key={index}>
                 <Card className="root">
                   <CardContent className="content">
                     <div className="order-item-details">

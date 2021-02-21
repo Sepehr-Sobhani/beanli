@@ -22,9 +22,9 @@ export default function StoreSummary() {
         }!`}
       </p>
       <div className="orders-container">
-        {orderItems.map((item) => {
+        {orderItems.map((item, index) => {
           return (
-            <div className="item-container">
+            <div className="item-container" key={index}>
               <p className="item-name">{item.name}</p>
               <p>({item.quantity})</p>
               <p>${convertCentsToDollars(item.price * item.quantity)}</p>

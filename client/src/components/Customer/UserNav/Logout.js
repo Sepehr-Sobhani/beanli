@@ -6,7 +6,7 @@ function Logout(props) {
 
   return (
     <>
-      <Link>
+      <Link to="/">
         Log out
         <ExitToAppIcon style={{ marginLeft: "0.5rem" }} />
       </Link>

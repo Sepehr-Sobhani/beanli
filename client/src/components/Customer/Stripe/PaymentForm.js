@@ -167,7 +167,7 @@ export default function PaymentForm(props) {
         {props.order.total === 0 && (
           <p id="free">Thanks for your beans, this one's on us!</p>
         )}
-        <label for="mobile">Your order confirmation will be sent to:</label>
+        <label htmlFor="mobile">Your order confirmation will be sent to:</label>
         <input
           id="mobile"
           name="mobile"
