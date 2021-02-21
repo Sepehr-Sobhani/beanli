@@ -18,57 +18,6 @@ const dndColumns = {
   },
 };
 
-const onDragEnd = (
-  { source, destination },
-  columns,
-  setColumns,
-  orderUpdPar,
-  setOrderUpdPar
-) => {
-  //Returns order to the same place if no destination has set
-  if (!destination) return;
-
-  //Takes order to a new column
-  if (source.droppableId !== destination.droppableId) {
-    const sourceColumn = columns[source.droppableId];
-    console.log("SOURCE Col: ", sourceColumn);
-    const destColumn = columns[destination.droppableId];
-    const sourceItems = [...sourceColumn.items];
-    const destItems = [...destColumn.items];
-    const [removed] = sourceItems.splice(source.index, 1);
-    destItems.splice(destination.index, 0, removed);
-    setOrderUpdPar({
-      ...orderUpdPar,
-      id: sourceColumn.id,
-      username: sourceColumn.username,
-    });
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...sourceColumn,
-        items: sourceItems,
-      },
-      [destination.droppableId]: {
-        ...destColumn,
-        items: destItems,
-      },
-    });
-  } else {
-    //Takes back the order to the same column
-    const column = columns[source.droppableId];
-    const copiedItems = [...column.items];
-    const [removed] = copiedItems.splice(source.index, 1);
-    copiedItems.splice(destination.index, 0, removed);
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...column,
-        items: copiedItems,
-      },
-    });
-  }
-};
-
 const StoreOwner = () => {
   const [columns, setColumns] = useState(dndColumns);
   // Store id is hard coded here
@@ -76,7 +25,58 @@ const StoreOwner = () => {
   const [orderUpdPar, setOrderUpdPar] = useState({ id: "", username: "" });
 
   console.log("ORDER UPDATE PAR: ", orderUpdPar);
+  console.log("ORDER column:", columns["1"]);
   console.log("Completed column:", columns["2"]);
+
+  const onDragEnd = (
+    { source, destination },
+    columns,
+    setColumns,
+    orderUpdPar,
+    setOrderUpdPar
+  ) => {
+    //Returns order to the same place if no destination has set
+    if (!destination) return;
+
+    //Takes order to a new column
+    if (source.droppableId !== destination.droppableId) {
+      const sourceColumn = columns[source.droppableId];
+      const destColumn = columns[destination.droppableId];
+      const sourceItems = [...sourceColumn.items];
+      const destItems = [...destColumn.items];
+      const [removed] = sourceItems.splice(source.index, 1);
+      destItems.splice(destination.index, 0, removed);
+      setColumns({
+        ...columns,
+        [source.droppableId]: {
+          ...sourceColumn,
+          items: sourceItems,
+        },
+        [destination.droppableId]: {
+          ...destColumn,
+          items: destItems,
+        },
+      });
+      setOrderUpdPar({
+        ...orderUpdPar,
+        id: sourceColumn.items[source.index].id,
+        username: sourceColumn.items[0].username,
+      });
+    } else {
+      //Takes back the order to the same column
+      const column = columns[source.droppableId];
+      const copiedItems = [...column.items];
+      const [removed] = copiedItems.splice(source.index, 1);
+      copiedItems.splice(destination.index, 0, removed);
+      setColumns({
+        ...columns,
+        [source.droppableId]: {
+          ...column,
+          items: copiedItems,
+        },
+      });
+    }
+  };
 
   useInterval(() => {
     axios
@@ -94,10 +94,9 @@ const StoreOwner = () => {
         }
       })
       .catch((err) => console.error({ error: err.message }));
-  }, 2000);
+  }, 5000);
 
   // To send SMS when order is completed
-  const completedOrderLength = columns["2"].items.length;
   const isFirstRun = useRef(true);
   useEffect(() => {
     if (isFirstRun.current) {
@@ -105,21 +104,20 @@ const StoreOwner = () => {
       return;
     }
 
-    // const completedItemCounter = columns["2"].items.reduce((acc, cur) => {
-    //   return acc + cur.orders.length;
-    // }, 0);
+    //Removes first item in the completed order column
+    const completedItemCounter = columns["2"].items.reduce((acc, cur) => {
+      return acc + cur.orders.length;
+    }, 0);
 
-    // if (completedItemCounter > 6) {
-    //   // columns["2"].items.shift();
-    //   console.log("More Than 6 here: ", columns["2"].items);
-    // }
+    if (completedItemCounter >= 6) {
+      columns["2"].items.pop();
+      console.log("More Than 6 here: ", columns["2"].items);
+    }
 
-    const orderId = columns["2"].items[completedOrderLength - 1].id;
-    const username = columns["2"].items[completedOrderLength - 1].username;
     const orderUpdateParams = {
-      order_id: orderId,
       store_id: storeId,
-      username: username,
+      order_id: orderUpdPar.id,
+      username: orderUpdPar.username,
     };
 
     axios
@@ -135,7 +133,7 @@ const StoreOwner = () => {
         //   axios.post("/api/messages", confirmMessage);
       })
       .catch((err) => console.error({ error: err.message }));
-  }, [completedOrderLength]);
+  }, [orderUpdPar]);
 
   return (
     <div>
