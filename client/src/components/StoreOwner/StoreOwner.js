@@ -1,12 +1,14 @@
-import StoreNav from "./StoreNav";
-import "./styles.scss";
+import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+import { useParams } from "react-router-dom";
+
+import StoreNav from "./StoreNav";
 import OrderColumns from "./OrdersDashboard/OrderColumns";
-import axios from "axios";
 import { orderOrganizer } from "../../helpers/selectors";
 import { useInterval } from "../../helpers/useInterval";
-import { useParams } from "react-router-dom";
+
+import "./styles.scss";
 
 const dndColumns = {
   1: {

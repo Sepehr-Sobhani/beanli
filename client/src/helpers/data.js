@@ -1,5 +1,4 @@
 const distance = function (origin, array) {
-  
   const originLat = origin.latitude;
   const originLong = origin.longitude;
 

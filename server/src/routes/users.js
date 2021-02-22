@@ -38,10 +38,10 @@ module.exports = (db) => {
     }
   });
 
-    //Update an existing user
+  //Update an existing user
   router.put("/users/:id", (req, res) => {
     // Getting user info as a JSON file
-    console.log('REQ BODY', req.body)
+    console.log("REQ BODY", req.body);
     const { current_beans, lifetime_beans, tier, accelerator } = req.body;
     const queryParams = [
       current_beans,
@@ -54,15 +54,14 @@ module.exports = (db) => {
       `UPDATE customer_information SET current_beans = $1,  lifetime_beans = $2,  tier = $3,  accelerator = $4 WHERE user_id = $5 RETURNING *;`,
       queryParams
     )
-      .then((result) => { 
-        if(result.rowCount < 1) {
-          throw Error("user not found!")
+      .then((result) => {
+        if (result.rowCount < 1) {
+          throw Error("user not found!");
         }
-        res.json({ message: `user${req.params.id} updated!` })
-    })
+        res.json({ message: `user${req.params.id} updated!` });
+      })
       .catch((err) => res.status(404).json({ error: err.message }));
   });
-
 
   return router;
 };

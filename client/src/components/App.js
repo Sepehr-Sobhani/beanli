@@ -33,40 +33,4 @@ export default function App() {
       </Router>
     </appContext.Provider>
   );
-
-  //   <div className="App">
-  //     {customer && (
-  //       <appContext.Provider
-  //         value={{ state, setStore, postOrder, updateBeans }}
-  //       >
-  //         <Customer />
-  //       </appContext.Provider>
-  //     )}
-  //     {/* {storeOwner && (
-  //       <appContext.Provider value={{ state }}>
-  //         <StoreOwner />
-  //       </appContext.Provider>
-  //     )} */}
-  //   </div>
-  // );
-
-  // const [message, setMessage] =  useState('Click the button to load data!')
-  // const fetchData = () => {
-  //   axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-  //   .then((response) => {
-  //     // handle success
-  //     console.log(response.data) // The entire response from the Rails API
-
-  //     console.log(response.data.message) // Just the message
-  //     setMessage(response.data.message);
-  //   })
-  // }
-  //   return (
-  //     <div className="App">
-  //       <h1>{ message }</h1>
-  //       <button onClick={fetchData} >
-  //         Fetch Data
-  //       </button>
-  //     </div>
-  //   );
 }

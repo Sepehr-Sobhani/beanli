@@ -1,11 +1,13 @@
-import "./styles.scss";
+import { useContext } from "react";
+import { appContext } from "../../appContext";
+
 import Logo from "./Logo";
 import WelcomeMessage from "./WelcomeMessage";
 import CurrentBeans from "./CurrentBeans";
 import LifetimeBeans from "./LifetimeBeans";
 import Tier from "./Tier";
-import { useContext } from "react";
-import { appContext } from "../../appContext";
+
+import "./styles.scss";
 
 function UserInfo() {
   const { state } = useContext(appContext);

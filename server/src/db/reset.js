@@ -1,22 +1,20 @@
-  const router = require("express").Router();
-  const fs = require("fs");
-  const path = require("path");
-  const ENV = require("../environment")
+const router = require("express").Router();
+const fs = require("fs");
+const path = require("path");
+const ENV = require("../environment");
 
-
-  module.exports = (db) => {
-
-    read = (file) => {
-      return new Promise ((resolve, reject) => {
-        fs.readFile(file, {encoding: "utf-8"} ,(err, data) => {
-          err ? reject(err) : resolve (data)
+module.exports = (db) => {
+  read = (file) => {
+    return new Promise((resolve, reject) => {
+      fs.readFile(file, { encoding: "utf-8" }, (err, data) => {
+        err ? reject(err) : resolve(data);
       });
-      });
-    };
+    });
+  };
 
   Promise.all([
     read(path.resolve(__dirname, `../../db/create.sql`)),
-    read(path.resolve(__dirname, `../../db/${ENV}.sql`))
+    read(path.resolve(__dirname, `../../db/${ENV}.sql`)),
   ])
     .then(([create, seed]) => {
       router.get("/reset", (req, res) => {
@@ -27,16 +25,14 @@
             res.status(200).send("Database Reset");
           })
           .catch((err) => {
-            console.log(`Error resetting the database: ${err}`)
-            res.status(500).send("Database Reset Error")
-          })
+            console.log(`Error resetting the database: ${err}`);
+            res.status(500).send("Database Reset Error");
+          });
       });
     })
-    .catch((err) =>{
-      console.log("Reset database files cannot be read", err)
-    })
+    .catch((err) => {
+      console.log("Reset database files cannot be read", err);
+    });
 
-    return router;
-  }
-
-  
+  return router;
+};
