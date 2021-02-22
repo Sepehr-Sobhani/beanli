@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import { Button } from "@material-ui/core";
+
+import { convertCentsToDollars } from "../../../helpers/math";
 
 import "./styles.scss";
-import { Button } from "@material-ui/core";
-import { convertCentsToDollars } from "../../../helpers/math";
 
 function YourCartButton(props) {
   const [cart, setCart] = useState(props.cart);
