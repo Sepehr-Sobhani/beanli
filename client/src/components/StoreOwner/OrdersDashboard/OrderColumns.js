@@ -1,6 +1,7 @@
-import OrderItems from "./OrderItems";
 import { Droppable } from "react-beautiful-dnd";
 import React from "react";
+
+import OrderItems from "./OrderItems";
 
 const OrderColumns = ({ column, columnId }) => {
   return (
