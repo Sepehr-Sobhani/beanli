@@ -75,8 +75,6 @@ export default function useApplicationData() {
   }, [state.currentStore]);
 
   const setStore = (storeId) => {
-    console.log("run setStore");
-
     setState((prev) => ({
       ...prev,
       currentStore: storeId,

@@ -54,7 +54,7 @@ function Cart(props) {
                     />
                     <div className="adjust-qty">
                       <AddIcon
-                        style={{ "font-size": "1rem", color: "green" }}
+                        style={{ "fontSize": "1rem", color: "green" }}
                         onClick={(event) =>
                           props.setCart((prev) => {
                             const cartCopy = [...prev];
@@ -64,7 +64,7 @@ function Cart(props) {
                         }
                       />
                       <RemoveIcon
-                        style={{ "font-size": "1rem", color: "red" }}
+                        style={{ "fontSize": "1rem", color: "red" }}
                         onClick={(event) =>
                           props.setCart((prev) => {
                             const cartCopy = [...prev];
@@ -72,7 +72,6 @@ function Cart(props) {
                             // remove item from cart
                             cartCopy[index].quantity === 0 &&
                               cartCopy.splice(index, 1);
-                            console.log(cartCopy);
                             return cartCopy;
                           })
                         }

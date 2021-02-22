@@ -141,7 +141,6 @@ export default function PaymentForm(props) {
   };
 
   const handleMobileChange = (number) => {
-    console.log(number);
     setMobile(number.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3"));
   };
 
