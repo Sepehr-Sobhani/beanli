@@ -45,7 +45,11 @@ export default function Customer() {
 
   // update cart state if a user changes the quantity in their cart
   useEffect(() => {
-    setTotal(getTotal(cart))
+    if(cart.length === 0) {
+      handleClose()
+    } else {
+      setTotal(getTotal(cart))
+    }
   }, [cart])
 
 
