@@ -1,6 +1,7 @@
-import "./styles.scss";
 import Logout from "./Logout";
 import OrderHistory from "./OrderHistory";
+
+import "./styles.scss";
 
 function UserNav() {
   return (
