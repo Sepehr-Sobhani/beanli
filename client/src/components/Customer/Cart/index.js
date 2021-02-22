@@ -3,14 +3,13 @@ import { useHistory } from "react-router-dom";
 import { Modal } from "@material-ui/core";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
-
 import BeanSlider from "./BeanSlider";
 
-import "./styles.scss";
 import { convertCentsToDollars } from "../../../helpers/math";
 
+import "./styles.scss";
+
 function Cart(props) {
-  console.log('propsInCart', props)
   const history = useHistory();
 
   // 1 bean = 50c
@@ -36,12 +35,12 @@ function Cart(props) {
               {props.cart[index].quantity > 0 && (
                 <div className="cart-item-container">
                   <p className="item-name">{props.cart[index].name}</p>
-                    <p>
-                      $
-                      {convertCentsToDollars(
-                        item.price * props.cart[index].quantity
-                      )}
-                    </p>
+                  <p>
+                    $
+                    {convertCentsToDollars(
+                      item.price * props.cart[index].quantity
+                    )}
+                  </p>
                   <div className="input-control">
                     <input
                       value={props.cart[index].quantity}
@@ -54,16 +53,18 @@ function Cart(props) {
                       }
                     />
                     <div className="adjust-qty">
-                    <AddIcon style={{'font-size': '1rem', color: 'green'}}
-                      onClick={(event) =>
-                        props.setCart((prev) => {
-                          const cartCopy = [...prev];
-                          cartCopy[index].quantity += 1;
-                          return cartCopy;
-                        })
-                      }
-                    />
-                      <RemoveIcon style={{'font-size': '1rem', color:'red'}}
+                      <AddIcon
+                        style={{ "fontSize": "1rem", color: "green" }}
+                        onClick={(event) =>
+                          props.setCart((prev) => {
+                            const cartCopy = [...prev];
+                            cartCopy[index].quantity += 1;
+                            return cartCopy;
+                          })
+                        }
+                      />
+                      <RemoveIcon
+                        style={{ "fontSize": "1rem", color: "red" }}
                         onClick={(event) =>
                           props.setCart((prev) => {
                             const cartCopy = [...prev];
@@ -71,12 +72,10 @@ function Cart(props) {
                             // remove item from cart
                             cartCopy[index].quantity === 0 &&
                               cartCopy.splice(index, 1);
-                            console.log(cartCopy);
                             return cartCopy;
                           })
                         }
                       />
-
                     </div>
                   </div>
                 </div>
@@ -85,21 +84,21 @@ function Cart(props) {
           );
         })}
         <div className="cart-footer-text">
-          <p id='grind-some'>Grind some beans?</p>
-        <BeanSlider
-          removeFromTotal={removeFromTotal}
-          addToTotal={addToTotal}
-          beansSpent={props.beansSpent}
-          setBeansSpent={props.setBeansSpent}
-          total={props.cart}
+          <p id="grind-some">Grind some beans?</p>
+          <BeanSlider
+            removeFromTotal={removeFromTotal}
+            addToTotal={addToTotal}
+            beansSpent={props.beansSpent}
+            setBeansSpent={props.setBeansSpent}
+            total={props.cart}
           />
           <p id="total">TOTAL: ${convertCentsToDollars(props.total)}</p>
-        <input
-          id="checkout"
-          type="submit"
-          value="Bean me up Scottie!"
-          disabled={!props.cart.length ? true : false}
-        />
+          <input
+            id="checkout"
+            type="submit"
+            value="Bean me up Scottie!"
+            disabled={!props.cart.length ? true : false}
+          />
         </div>
       </form>
     </div>

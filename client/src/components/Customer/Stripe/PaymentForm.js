@@ -3,12 +3,13 @@ import { useHistory } from "react-router-dom";
 import { useContext, useState } from "react";
 import { appContext } from "../../appContext";
 
-import "./style.scss";
 import {
   beansEarned,
   checkTier,
   convertCentsToDollars,
 } from "../../../helpers/math";
+
+import "./style.scss";
 
 export default function PaymentForm(props) {
   const { state, postOrder, updateBeans } = useContext(appContext);
@@ -58,7 +59,6 @@ export default function PaymentForm(props) {
     const userId = state.currentUser;
     const {
       accelerator,
-      tier,
       current_beans: currentBeans,
       lifetime_beans: currentLifetimeBeans,
     } = state.user[0];
@@ -78,23 +78,6 @@ export default function PaymentForm(props) {
       newLifetime
     );
 
-    const log = () => {
-      console.log("********************************");
-      console.log("UserID:", userId);
-      console.log("OrderTotal-CashSpent:", props.order.total);
-      console.log("beansSpent:", beansSpent);
-      console.log("prevCurrentBeans:", currentBeans);
-      console.log("beansEarned:", beansEarnedForTransaction);
-      console.log("newCurrentBeans:", newCurrent);
-      console.log("currentLifeTimeBeans:", currentLifetimeBeans);
-      console.log("newLifetimeBeans:", newLifetime);
-      console.log("prevTier:", tier);
-      console.log("newTier", newTier);
-      console.log("Currentaccelerator", accelerator);
-      console.log("newAccelerator", newAccelerator);
-      console.log("********************************");
-    };
-
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
       // form submission until Stripe.js has loaded.
@@ -109,8 +92,6 @@ export default function PaymentForm(props) {
       if (token) {
         setError(null);
         setFormState("submitted");
-
-        log();
 
         await postOrder(order);
         await updateBeans(
@@ -129,8 +110,6 @@ export default function PaymentForm(props) {
         setFormState("error");
       }
     } else {
-      log();
-
       await postOrder(order);
       await updateBeans(
         userId,
@@ -162,7 +141,6 @@ export default function PaymentForm(props) {
   };
 
   const handleMobileChange = (number) => {
-    console.log(number);
     setMobile(number.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3"));
   };
 

@@ -3,12 +3,12 @@
   width: 90%;
   margin: 2rem 0 0 0;
   box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
-  rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+    rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
 }
 
 .orders-container {
   width: 100%;
-  
+
   .item-container {
     display: flex;
     justify-content: space-evenly;
@@ -17,7 +17,6 @@
       width: 12rem;
     }
   }
-  
 }
 
 .order-summary {
@@ -43,6 +42,4 @@
   #order-total {
     margin: 1rem 0 2rem 0;
   }
-
-
 }

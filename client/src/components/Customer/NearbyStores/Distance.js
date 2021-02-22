@@ -16,8 +16,6 @@ export default function Distance(props) {
       <MenuItem value={10}>10 km</MenuItem>
       <MenuItem value={20}>20 km</MenuItem>
       <MenuItem value={30}>30 km</MenuItem>
-      {/* <MenuItem value={50}>50 km</MenuItem>
-    <MenuItem value={100}>100 km</MenuItem> */}
     </Select>
   );
 }
