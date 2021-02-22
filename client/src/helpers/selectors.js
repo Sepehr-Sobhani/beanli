@@ -39,6 +39,7 @@ export const orderOrganizer = (array) => {
 };
 
 export const getOrdersInfo = function (orders) {
+  console.log("getOrdersInfo - Input:", orders)
   if (!orders.message) {
     const userOrders = [];
     orders.forEach((item) => {
@@ -48,6 +49,7 @@ export const getOrdersInfo = function (orders) {
         price: item.price,
         image: item.image,
         quantity: 1,
+        menuItemId: item.menu_item_id
       };
       //creates order obj
       const order = {

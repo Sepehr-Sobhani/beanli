@@ -10,6 +10,7 @@ import "./styles.scss";
 import { convertCentsToDollars } from "../../../helpers/math";
 
 function Cart(props) {
+  console.log('propsInCart', props)
   const history = useHistory();
 
   // 1 bean = 50c
