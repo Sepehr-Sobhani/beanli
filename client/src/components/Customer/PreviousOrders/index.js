@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { useContext } from "react";
-import { convertCentsToDollars } from "../../../helpers/math";
+import { convertCentsToDollars, totalFromCart } from "../../../helpers/math";
 import { appContext } from "../../appContext";
 import { getTotal } from "../../../helpers/getTotal";
 import bean from "../../../assets/logo/beans.png";
@@ -14,10 +14,12 @@ import "./styles.scss";
 function PreviousOrders(props) {
   const { state } = useContext(appContext);
   const prevOrders = getOrdersInfo(state.orders);
+  console.log('GetOrdersInfo - Output:', prevOrders)
 
   const reorder = (order) => {
+    console.log("reorder cart", order.orderItems)
     props.setCart(order.orderItems);
-  };
+   };
 
   if (prevOrders) {
     const previous = prevOrders.map((order, index) => {
