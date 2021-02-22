@@ -27,7 +27,6 @@ app.use(morgan("dev"));
 
 //Twilio SMS Route
 app.post("/api/messages", (req, res) => {
-  console.log(req.body);
   client.messages
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
