@@ -5,7 +5,7 @@ $grey-color: #707070;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: $grey-color;
+  background-color: #f2f2f2;
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -13,9 +13,10 @@ $grey-color: #707070;
   text-align: center;
   max-height: calc(100vh - 4rem);
   max-width: calc(100vh - 4rem);
+  border-radius: 1%;
   p,
   h1 {
-    background-color: $grey-color;
+    background-color: transparent;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
@@ -30,10 +31,15 @@ $grey-color: #707070;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 18rem;
+    width: 20rem;
     input {
+      width: 2rem;
       margin-top: 0.2rem;
       margin-bottom: 0.2rem;
+      background-color: transparent;
+      border-style: none;
+      padding: 0;
+      box-shadow: none;
     }
     .input-control {
       display: flex;
@@ -43,15 +49,51 @@ $grey-color: #707070;
     .cart-item-container {
       margin-top: 0.8rem;
       border-bottom: 1px dotted black;
+      width: 20rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .item-name {
+        width: 10rem;
+      }
+
+      .adjust-qty {
+        display: flex;
+        flex-direction: column;
+        font-size: 50px;
+      }
     }
     .cart-footer-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       margin-top: 0.5rem;
       p {
         font-size: larger;
+      }
+
+      #checkout {
+        color: white;
+        background-color: black;
+        width: 12rem;
+        padding: 0.5rem;
+        border-radius: 0;
+        margin: 1rem 0;
+      }
+
+      #grind-some {
+        margin-top: 2rem;
       }
     }
     .slider-container {
       width: 15rem;
     }
   }
+}
+
+.bean-icon {
+  height: 20px;
+  width: 20px;
+  background-image: url('https://img.icons8.com/windows/452/cursor.png');
 }

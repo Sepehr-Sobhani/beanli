@@ -35,21 +35,14 @@ function Cart(props) {
             <div key={index}>
               {props.cart[index].quantity > 0 && (
                 <div className="cart-item-container">
-                  <p>{props.cart[index].name}</p>
+                  <p className="item-name">{props.cart[index].name}</p>
+                    <p>
+                      $
+                      {convertCentsToDollars(
+                        item.price * props.cart[index].quantity
+                      )}
+                    </p>
                   <div className="input-control">
-                    <RemoveIcon
-                      onClick={(event) =>
-                        props.setCart((prev) => {
-                          const cartCopy = [...prev];
-                          cartCopy[index].quantity -= 1;
-                          // remove item from cart
-                          cartCopy[index].quantity === 0 &&
-                            cartCopy.splice(index, 1);
-                          console.log(cartCopy);
-                          return cartCopy;
-                        })
-                      }
-                    />
                     <input
                       value={props.cart[index].quantity}
                       onChange={(event) =>
@@ -60,7 +53,8 @@ function Cart(props) {
                         })
                       }
                     />
-                    <AddIcon
+                    <div className="adjust-qty">
+                    <AddIcon style={{'font-size': '1rem', color: 'green'}}
                       onClick={(event) =>
                         props.setCart((prev) => {
                           const cartCopy = [...prev];
@@ -69,34 +63,44 @@ function Cart(props) {
                         })
                       }
                     />
+                      <RemoveIcon style={{'font-size': '1rem', color:'red'}}
+                        onClick={(event) =>
+                          props.setCart((prev) => {
+                            const cartCopy = [...prev];
+                            cartCopy[index].quantity -= 1;
+                            // remove item from cart
+                            cartCopy[index].quantity === 0 &&
+                              cartCopy.splice(index, 1);
+                            console.log(cartCopy);
+                            return cartCopy;
+                          })
+                        }
+                      />
+
+                    </div>
                   </div>
-                  <p>
-                    $
-                    {convertCentsToDollars(
-                      item.price * props.cart[index].quantity
-                    )}
-                  </p>
                 </div>
               )}
             </div>
           );
         })}
         <div className="cart-footer-text">
-          <p>TOTAL: ${convertCentsToDollars(props.total)}</p>
-          <p>Grind some beans?</p>
-        </div>
+          <p id='grind-some'>Grind some beans?</p>
         <BeanSlider
           removeFromTotal={removeFromTotal}
           addToTotal={addToTotal}
           beansSpent={props.beansSpent}
           setBeansSpent={props.setBeansSpent}
           total={props.cart}
-        />
+          />
+          <p id="total">TOTAL: ${convertCentsToDollars(props.total)}</p>
         <input
+          id="checkout"
           type="submit"
           value="Bean me up Scottie!"
           disabled={!props.cart.length ? true : false}
         />
+        </div>
       </form>
     </div>
   );
