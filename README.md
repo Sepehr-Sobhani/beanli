@@ -10,15 +10,15 @@ Contributors: [Joseph Williams](https://github.com/josepwil), [Sepehr Sobhani](h
 
 #### Ordering:
 
-!["Ordering Gif"]()
+!["Ordering Gif"](https://github.com/StewartMck/beanli/blob/master/docs/Ordering.gif)
 
 #### Order History and Re-ordering:
 
-!["Order History Gif"]()
+!["Order History Gif"](https://github.com/StewartMck/beanli/blob/master/docs/Order_History.gif)
 
 #### Store Owner Dashboard:
 
-!["Store Owner Dashboard Gif"]()
+!["Store Owner Dashboard Gif"](https://github.com/StewartMck/beanli/blob/master/docs/Store_Owner_Dashboard.gif)
 
 ## Features
 
