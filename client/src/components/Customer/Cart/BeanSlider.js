@@ -51,7 +51,11 @@ export default function BeanSlider(props) {
         valueLabelDisplay="auto"
         // Allows slider to show user bean in a Dollar context
         valueLabelFormat={(value) => Math.floor(value / 100)}
+<<<<<<< HEAD
+        style={{color: '#615544'}} 
+=======
         style={{ color: "#615544" }}
+>>>>>>> aeff8b51e9cb47bf6396469aa343c38a1f00b92f
       />
     </div>
   );
