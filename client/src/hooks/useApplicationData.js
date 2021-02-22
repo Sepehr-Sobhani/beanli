@@ -24,19 +24,12 @@ export default function useApplicationData() {
     myCoords: { latitude: 49.281338241296815, longitude: -123.11492992211487 },
   });
 
-  //get location fn
-
   useEffect(() => {
-    console.log("Running App Start effect");
-    Promise.all([
-      // getLocation(),
-      axios.get("/api/stores"),
-    ])
+    Promise.all([axios.get("/api/stores")])
       .then((all) => {
         setState((prev) => ({
           ...prev,
           stores: distance(state.myCoords, all[0].data),
-          // nearbyStores: getNearbyStores(state.stores)
         }));
       })
       .catch((err) =>
@@ -47,7 +40,6 @@ export default function useApplicationData() {
   }, []);
 
   useEffect(() => {
-    console.log("Running user effect");
     Promise.all([
       axios.get(`/api/users/${state.currentUser}`),
       axios.get(`/api/orders/${state.currentUser}`),
@@ -67,7 +59,6 @@ export default function useApplicationData() {
   }, [state.currentUser]);
 
   useEffect(() => {
-    console.log("Running menu effect");
     axios
       .get(`/api/menu/${state.currentStore}`)
       .then((result) => {
@@ -93,7 +84,6 @@ export default function useApplicationData() {
   };
 
   const postOrder = (order) => {
-    console.log("Received by postOrder:", order);
     return axios({
       method: "post",
       url: "/api/order",
