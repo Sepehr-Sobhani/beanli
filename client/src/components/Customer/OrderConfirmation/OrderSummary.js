@@ -7,7 +7,6 @@ import { getOrdersInfo } from "../../../helpers/selectors";
 export default function StoreSummary() {
   const context = useContext(appContext);
   const orders = context.state.orders;
-  console.log("Orders in State:",context.state.orders )
   const { totalPrice: mostRecentTotal, orderItems } = getOrdersInfo(orders)[
     "0"
   ];
